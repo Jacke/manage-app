@@ -29,7 +29,7 @@ gem 'tabulatr'
 # gem 'capistrano', group: :development
 # gem 'debugger', group: [:development, :test]
 
-gem 'bootstrap-sass', '~> 2.3.2.2'
+gem 'bootstrap-sass'
 gem 'figaro'
 gem 'haml-rails'
 gem 'high_voltage'

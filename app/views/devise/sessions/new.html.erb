@@ -1,0 +1,19 @@
+<hr>
+<div class="container">
+<div class="row">
+<div class="span4 offset4 well">
+<legend>Выполните вход</legend>
+<!-- <div class="alert alert-error">
+ <a class="close" data-dismiss="alert" href="#">×</a>Incorrect Username or Password! 
+</div>-->
+
+<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <%= f.input :email, :required => false, :autofocus => true, :class => 'span5' %>
+  <%= f.input :password, :required => false, :class => 'span5', :id => 'password' %>
+  <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
+  <%= f.button :submit, "Вход", :class => 'btn btn-info btn-block' %>
+<% end %>
+</div>
+</div>
+</div>
+<%#= render "devise/shared/links" %>

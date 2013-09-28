@@ -184,7 +184,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
-  bootstrap-sass (~> 2.3.2.2)
+  bootstrap-sass
   coffee-rails (~> 4.0.0)
   devise (= 3.0.0)
   figaro

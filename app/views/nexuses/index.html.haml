@@ -1,0 +1,46 @@
+%h1 Товары — Главная база
+%table.table.table-striped
+  %tr
+    %th Title
+    %th Pages
+    %th ISBN
+    %th pricetax
+    %th year
+    %th onpn 
+    %th author 
+    %th header 
+    %th std 
+    %th price
+    %th publisher 
+    %th translate 
+    %th sid
+    %th year
+    %th genre
+    %th series 
+    %th format 
+    %th article
+    %th ean 
+    %th category 
+  - @items.each do |item|
+    %tr
+      %td= item.title
+      %td= item.pages
+      %td= item.isbn
+      %td= item.pricetax
+      %td= item.year
+      %td= item.onpn 
+      %td= item.author 
+      %td= item.header 
+      %td= item.std 
+      %td= item.price
+      %td= item.publisher 
+      %td= item.translate 
+      %td= item.sid
+      %td= item.year
+      %td= item.genre
+      %td= item.series 
+      %td= item.format 
+      %td= item.article
+      %td= item.ean 
+      %td= item.category 
+
