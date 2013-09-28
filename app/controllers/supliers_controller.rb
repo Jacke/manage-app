@@ -1,0 +1,2 @@
+class SupliersController < ApplicationController
+end

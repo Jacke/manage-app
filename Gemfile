@@ -15,19 +15,18 @@ gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 
 gem 'jbuilder', '~> 1.2'
-gem 'devise'
+gem 'devise', '3.0.0'
 
 # Tables
-gem "wice_grid"
+#gem "wice_grid"
+gem 'tabulatr'
+
 
 # bundle exec rake doc:rails generates the API under doc/api.
-# Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
-# Use unicorn as the app server
+
 # gem 'unicorn'
-# Use Capistrano for deployment
 # gem 'capistrano', group: :development
-# Use debugger
 # gem 'debugger', group: [:development, :test]
 
 gem 'bootstrap-sass', '~> 2.3.2.2'
@@ -35,7 +34,7 @@ gem 'figaro'
 gem 'haml-rails'
 gem 'high_voltage'
 gem 'simple_form', '>= 3.0.0.rc'
-
+gem 'rspec-rails'
 group :assets do
   gem 'therubyracer', :platform=>:ruby
 end

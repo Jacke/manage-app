@@ -1,0 +1,2 @@
+class NexusesController < ApplicationController
+end
