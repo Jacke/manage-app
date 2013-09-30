@@ -1,0 +1,19 @@
+%h1 Поставщики
+
+%table.table
+  %tr
+    %th Название
+    %th
+    %th
+    %th
+
+  - @supliers.each do |suplier|
+    %tr
+      %td= suplier.sid
+      %td= link_to 'Показать', suplier
+      %td= link_to 'Редактировать', edit_suplier_path(suplier)
+      %td= link_to 'Удалить', suplier, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'Новый поставщик', new_suplier_path

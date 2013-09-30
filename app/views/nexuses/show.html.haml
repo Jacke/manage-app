@@ -1,0 +1,71 @@
+%p#notice= notice
+%section.main
+  %p
+    sid 
+    =@nexus.sid
+  %p
+    title 
+    =@nexus.title
+  %p
+    pricetax 
+    =@nexus.pricetax
+  %p
+    pages 
+    =@nexus.pages
+  %p
+    year 
+    =@nexus.year
+  %p
+    onpn 
+    =@nexus.onpn
+  %p
+    author 
+    =@nexus.author
+  %p
+    header 
+    =@nexus.header
+  %p
+    std 
+    =@nexus.std
+  %p
+    price 
+    =@nexus.price
+  %p
+    publisher 
+    =@nexus.publisher
+  %p
+    translate 
+    =@nexus.translate
+  %p
+    year 
+    =@nexus.year
+  %p
+    genre 
+    =@nexus.genre
+  %p
+    series 
+    =@nexus.series
+  %p
+    format 
+    =@nexus.format
+  %p
+    isbn 
+    =@nexus.isbn
+  %p
+    article 
+    =@nexus.article
+  %p
+    ean 
+    =@nexus.ean
+  %p
+    category 
+    =@nexus.category
+%section.description
+  %p Description
+  
+%section.category
+  %p Category
+
+= link_to 'Редактировать', edit_nexuse_path(@nexus)
+\|
+= link_to 'Назад', nexuses_path

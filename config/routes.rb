@@ -1,4 +1,8 @@
 Manage::Application.routes.draw do
+  resources :nexuses
+
+  resources :lists
+
   #####
   # Auth
   #####
@@ -10,9 +14,10 @@ Manage::Application.routes.draw do
   end
   ###########
   # Resources
-  ###########
-  resources :nexuses
-  resources :lists
+  ###########  resources :lists 
+  
+  get '/upload' => 'lists#upload', :as => :list_upload
+
   resources :supliers
   root :to => 'nexuses#index'
 end

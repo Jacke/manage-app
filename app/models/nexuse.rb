@@ -1,4 +1,4 @@
-class Nexus
+class Nexuse
   include Mongoid::Document
   field :title, type: String
   field :pricetax, type: String

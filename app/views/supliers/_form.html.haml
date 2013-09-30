@@ -1,0 +1,69 @@
+= form_for @suplier do |f|
+  - if @suplier.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@suplier.errors.count, "error")} prohibited this suplier from being saved:"
+      %ul
+        - @suplier.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label "Название поставщика"
+    = f.text_field :sid
+  .field
+    = f.label ":title"
+    = f.text_field :title
+  .field
+    = f.label ":pricetax"
+    = f.text_field :pricetax
+  .field 
+    = f.label ":page"
+    = f.text_field :pages
+  .field
+    = f.label ":year"
+    = f.text_field :year
+  .field
+    = f.label ":onpn"
+    = f.text_field :onpn
+  .field
+    = f.label ":author"
+    = f.text_field :author 
+  .field
+    = f.label ":header"
+    = f.text_field :header
+  .field
+    = f.label ":std"
+    = f.text_field :std 
+  .field
+    = f.label ":price"
+    = f.text_field :price
+  .field
+    = f.label ":publisher"
+    = f.text_field :publisher 
+  .field
+    = f.label ":translate"
+    = f.text_field :translate
+  .field
+    = f.label ":year"
+    = f.text_field :year 
+  .field
+    = f.label ":genre"
+    = f.text_field :genre
+  .field
+    = f.label ":series"
+    = f.text_field :series 
+  .field
+    = f.label ":format"
+    = f.text_field :format
+  .field
+    = f.label ":isbn"
+    = f.text_field :isbn
+  .field 
+    = f.label ":article"
+    = f.text_field :article
+  .field
+    = f.label ":ean"
+    = f.text_field :ean
+  .field
+    = f.label ":category"
+    = f.text_field :category 
+  .actions
+    = f.submit 'Save'

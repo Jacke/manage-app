@@ -1,0 +1,24 @@
+%h1 Прайсы
+= link_to 'Загрузить прайс-лист', list_upload_path 
+%table.table.table-striped
+  %tr
+    %th File
+    %th Parsed?
+    %th Поставщик
+    %th Сравнение
+    %th Timestamp
+  - @lists.each do |list|
+    %tr
+      %td= list.send('file-name')
+      %td= list.parsed
+      %td= list.sid
+      %td
+        - unless list.parsed
+          %a{href: "http://88.198.200.85:8081/diff?timestamp=#{list.timestamp}"} Сравнить
+      %td= list.timestamp
+      %td
+        = link_to "Удалить", list, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+
+
+
