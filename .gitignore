@@ -15,7 +15,7 @@
 /vendor/bundle/
 /vendor/ruby/
 # Clojure app
-
+clj-xlstream
 /clj-xlstream/*
 
 # minimal Rails specific artifacts
