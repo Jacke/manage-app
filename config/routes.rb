@@ -1,7 +1,10 @@
 Manage::Application.routes.draw do
+  resources :nexus_reports
   resources :nexuses
 
   resources :lists
+  resources :nexuse_reports, :only => [:index]
+  get '/long' => 'nexuse_reports#long'
 
   #####
   # Auth
@@ -19,5 +22,5 @@ Manage::Application.routes.draw do
   get '/upload' => 'lists#upload', :as => :list_upload
 
   resources :supliers
-  root :to => 'nexuses#index'
+  root :to => 'nexuse_reports#index'
 end

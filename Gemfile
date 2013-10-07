@@ -19,8 +19,10 @@ gem 'devise', '3.0.0'
 
 # Tables
 #gem "wice_grid"
-gem 'tabulatr'
-
+#gem 'tabulatr', :git => 'https://github.com/provideal/tabulatr', :branch => 'bootstrap'
+#gem "handles_sortable_columns"
+gem 'datagrid'
+gem "kaminari"
 
 # bundle exec rake doc:rails generates the API under doc/api.
 # gem 'bcrypt-ruby', '~> 3.0.0'

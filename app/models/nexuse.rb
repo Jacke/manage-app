@@ -1,5 +1,6 @@
 class Nexuse
   include Mongoid::Document
+  include Mongoid::Timestamps
   field :title, type: String
   field :pricetax, type: String
   field :pages,   type: Integer
@@ -20,6 +21,7 @@ class Nexuse
   field :article, type: String
   field :ean, type: String 
   field :category, type: String 
+  field :presence, type: Boolean
   PRESENCE = "presence"
   NOTPRESENT = "notpresent"
   scope :presence, where(presence: true)

@@ -5,6 +5,9 @@ class NexusesController < ApplicationController
   # GET /nexuses.json
 def index
   @nexuses = Nexuse.all.to_a
+  logger.info("===================>")
+  logger.info(params)
+  #@item_tab = Nexuse.all.find_for_table(params)
 end
 
   # GET /nexuses/1
