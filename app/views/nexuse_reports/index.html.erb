@@ -1,8 +1,8 @@
 <div id="tab" class="btn-group" data-toggle="buttons-radio">
   <a href="/nexuse_reports" class="btn btn-large btn-info">Base</a>
   <a href="/long" class="btn btn-large btn-info">Long</a>
-  <a href="#requests2" class="btn btn-large btn-info" data-toggle="tab">Categories</a>
-  <a href="#features2" class="btn btn-large btn-info" data-toggle="tab">Something</a>
+  <!--<a href="#requests2" class="btn btn-large btn-info" data-toggle="tab">Categories</a>
+  <a href="#features2" class="btn btn-large btn-info" data-toggle="tab">Something</a>-->
 </div>
  
 <div class="tab-content">
@@ -11,13 +11,14 @@
     <p class="lead">Base</p>
     <div class="row">
      <%= datagrid_form_for @nexuse_report, :method => :get, :url => nexuse_reports_path %>
-     <%#= paginate(@assets) %>
      <div class='total'>Total: <%#= @grid.assets.count %></div>
+     <%#= paginate(@assets) %>
+     
      <%= datagrid_table @nexuse_report, @assets %>
      <%= paginate(@assets) %>
     </div>
   </div>
-  <div class="tab-pane" id="features2">
+  <!--<div class="tab-pane" id="features2">
     <br>
     <p class="lead">Features content</p>
     <div class="row">
@@ -42,6 +43,6 @@
         <div class="span4">
           <img src="http://placehold.it/400x200">  
         </div>
-    </div>
+    </div>-->
   </div>
 </div>

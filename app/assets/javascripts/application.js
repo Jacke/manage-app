@@ -14,4 +14,16 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
-$('.tabs').tab()
+$('div.btn-group button').click(function(){
+
+    if ($(this).children('input[name="is_pending"]').val() == 0) {
+      $('#nexuse_report_moderation').val('');
+    }
+    else if ($(this).children('input[name="is_pending"]').val() == 1) {
+      $('#nexuse_report_moderation').val('NO');
+    }
+    else {
+      $('#nexuse_report_moderation').val('YES');
+    }
+
+})

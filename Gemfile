@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 ruby '2.0.0'
 gem 'rails', '4.0.0'
-
+#gem 'pry-rails'
 gem 'mongoid', github: 'mongoid/mongoid'
 
 gem 'sass-rails', '~> 4.0.0'
@@ -30,7 +30,7 @@ gem "kaminari"
 # gem 'unicorn'
 # gem 'capistrano', group: :development
 # gem 'debugger', group: [:development, :test]
-
+gem 'protected_attributes'
 gem 'bootstrap-sass'
 gem 'figaro'
 gem 'haml-rails'

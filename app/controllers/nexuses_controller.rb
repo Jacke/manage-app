@@ -45,6 +45,7 @@ end
   def update
     respond_to do |format|
       if @nexus.update(nexuse_params)
+        @nexus.update_attribute(:moderation, true)
         format.html { redirect_to @nexus, notice: 'Nexuse was successfully updated.' }
         format.json { head :no_content }
       else
@@ -72,6 +73,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nexuse_params
-      params[:nexuse]
+      params.require(:nexuse).permit(:title, :pricetax, :pages, :year, :onpn, :author, :header, :std, :price, :publisher, :translate, :sid, :genre, :series, :format, :isbn, :article, :ean, :moderation, :category, :presence)
     end
 end

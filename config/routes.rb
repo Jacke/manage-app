@@ -3,6 +3,7 @@ Manage::Application.routes.draw do
   resources :nexuses
 
   resources :lists
+  resources :users
   resources :nexuse_reports, :only => [:index]
   get '/long' => 'nexuse_reports#long'
 

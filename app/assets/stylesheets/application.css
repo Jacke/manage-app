@@ -12,3 +12,16 @@
  *= require_tree .
  *= require bootstrap
  */
+.filters .btn-group {
+margin-left: -12px;
+}
+div.btn-group[data-toggle=buttons-radio] input[type=radio] {
+  display:    block;
+  position:   absolute;
+  top:        0;
+  left:       0;
+  width:      100%;
+  height:     100%;
+  opacity:    hidden;
+  visibility: hidden;
+}

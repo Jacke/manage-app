@@ -20,6 +20,7 @@ class Nexuse
   field :isbn, type: String 
   field :article, type: String
   field :ean, type: String 
+  field :moderation, type: Boolean
   field :category, type: String 
   field :presence, type: Boolean
   PRESENCE = "presence"

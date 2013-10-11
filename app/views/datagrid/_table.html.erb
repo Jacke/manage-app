@@ -4,6 +4,7 @@ Local variables:
 * assets - Array of database Entities
 * options - passed options Hash
 %>
+<div class="span8">
 <%= content_tag :table, options[:html] do %>
   <thead>
     <%= datagrid_header(grid, options) %>
@@ -15,4 +16,4 @@ Local variables:
     <%= datagrid_rows(grid, assets, options) %>
     <% end %>
   </tbody>f
-<% end %>
+<% end %></div>

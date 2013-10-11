@@ -12,6 +12,7 @@ class NexuseReport
   ##  self.joins(:group).where(:groups => {:name => value})
   #end
   filter(:presence, :eboolean, :header => "Присутсвтие")
+  filter(:moderation, :eboolean, :header => "Обработка")
   filter :title, :header => "Название (содержит)" do |value|
     where(:title => /#{Regexp.escape(value)}/i)
   end

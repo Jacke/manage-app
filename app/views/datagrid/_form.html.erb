@@ -1,4 +1,19 @@
+<div class="span4 filters">
 <%= form_for grid, options do |f| -%>
+<div class="btn-group" id="moderation" data-toggle="buttons-radio" >
+  <button type="button" class="btn" data-toggle="button">
+    Все
+    <input type="radio" name="is_pending" value="0" />
+  </button>
+  <button type="button" class="btn" data-toggle="button">
+    В обработке
+    <input type="radio" name="is_pending" value="1" />
+  </button>
+  <button type="button" class="btn" data-toggle="button">
+    Обработанные
+    <input type="radio" name="is_pending" value="2" />
+  </button>
+</div>
   <% grid.filters.each do |filter| %>
     <div class="datagrid-filter filter">
       <%= f.datagrid_label filter %>
@@ -10,3 +25,4 @@
     <%= link_to I18n.t('datagrid.form.reset').html_safe, url_for(grid.to_param => {}), :class => "datagrid-reset" %>
   </div>
 <% end -%>
+</div>
