@@ -12,6 +12,12 @@ class NexuseReportsController < ApplicationController
     @assets = @nexuse_report.assets.page(params[:page])
     render :action => :index 
   end
+  def category
+    @categories = Nexuse.distinct(:category)
+    @genres = Nexuse.distinct(:genre)
+    @formats = Nexuse.distinct(:format)
+    @authors = Nexuse.distinct(:author)
+  end
 
 end
 

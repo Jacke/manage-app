@@ -6,6 +6,7 @@ Manage::Application.routes.draw do
   resources :users
   resources :nexuse_reports, :only => [:index]
   get '/long' => 'nexuse_reports#long'
+  get '/category' => 'nexuse_reports#category', :as => :nexuse_category
 
   #####
   # Auth
