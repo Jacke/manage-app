@@ -7,7 +7,7 @@ Manage::Application.routes.draw do
   resources :nexuse_reports, :only => [:index]
   get '/long' => 'nexuse_reports#long'
   get '/category' => 'nexuse_reports#category', :as => :nexuse_category
-
+  get '/flush' => 'nexuses#destroy_all', :as => :flush_db
   #####
   # Auth
   #####

@@ -23,10 +23,14 @@ class Nexuse
   field :moderation, type: Boolean
   field :category, type: String 
   field :presence, type: Boolean
+  # Item link
+  field :item_id, type: Integer
   PRESENCE = "presence"
   NOTPRESENT = "notpresent"
   scope :presence, where(presence: true)
   scope :notpresent, where(presence: false)
  # scope :recommend, where(recommend: true)
-
+  def self.flush
+    self.all.each {|i| i.destroy }
+  end
 end
