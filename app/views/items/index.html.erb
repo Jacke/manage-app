@@ -1,0 +1,48 @@
+<div id="tab" class="btn-group" data-toggle="buttons-radio">
+  <a href="/nexuse_reports" class="btn btn-large btn-info">Base</a>
+  <a href="/long" class="btn btn-large btn-info">Long</a>
+  <!--<a href="#requests2" class="btn btn-large btn-info" data-toggle="tab">Categories</a>
+  <a href="#features2" class="btn btn-large btn-info" data-toggle="tab">Something</a>-->
+</div>
+ 
+<div class="tab-content">
+  <div class="tab-pane active" id="base">
+    <br>
+    <p class="lead">Base</p>
+    <div class="row">
+     <%= datagrid_form_for @nexuse_report, :method => :get, :url => nexuse_reports_path %>
+     <div class='total'>Total: <%#= @grid.assets.count %></div>
+     <%#= paginate(@assets) %>
+     
+     <%= datagrid_table @nexuse_report, @assets %>
+     <%= paginate(@assets) %>
+    </div>
+  </div>
+  <!--<div class="tab-pane" id="features2">
+    <br>
+    <p class="lead">Features content</p>
+    <div class="row">
+        <div class="span6">
+          <p>For a full list of our services including support and consultancy for start-up businesses please see the Our Services section of the website. Alternatively if you have a specific service or question in mind please don’t hesitate to contact us to discuss this using the contact details on the Contact Us page of the site.</p> 
+        </div>
+        <div class="span6">
+          <img src="http://placehold.it/400x400">  
+        </div>
+    </div>
+  </div>
+  <div class="tab-pane" id="requests2">
+    <br>
+    <p class="lead">Requests content</p>
+    <div class="row">
+      <div class="span3">
+          <img src="http://placehold.it/200x200">  
+        </div>
+        <div class="span5">
+          <p>There are now two rates of Capital Gains Tax (CGT) for individuals. A standard rate of 18% and a higher rate of 28%. The annual exempt amount is still £10,100 for ’10-’11. For more information on CGT please see the factsheet we have put together, which is available to download below.</p> 
+        </div>
+        <div class="span4">
+          <img src="http://placehold.it/400x200">  
+        </div>
+    </div>-->
+  </div>
+</div>

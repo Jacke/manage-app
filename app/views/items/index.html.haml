@@ -1,0 +1,122 @@
+%section.nexuses
+  %h1 Товары — Главная база
+  %ul.tabs 
+    %li.active  
+      %a{:href => "#db", "data-toggle" => "tab"} База
+    %li
+      %a{:href => "#categories", "data-toggle" => "tab"} Category
+    %li
+      %a{:href => "#types", "data-toggle" => "tab"} Типы товаров
+  %div.tabs-content
+    %div.active#db
+      %table.table.table-striped
+        %tr
+          %th Title
+          %th Pages
+          %th ISBN
+          %th pricetax
+          %th year
+          %th onpn 
+          %th author 
+          %th header 
+          %th std 
+          %th price
+          %th publisher 
+          %th translate 
+          %th sid
+          %th year
+          %th genre
+          %th series 
+          %th format 
+          %th article
+          %th ean 
+          %th category 
+          %th presence
+          %th Действия
+        - @nexuses.each do |item|
+          %tr
+            %td= item.title
+            %td= item.pages
+            %td= item.isbn
+            %td= item.pricetax
+            %td= item.year
+            %td= item.onpn 
+            %td= item.author 
+            %td= item.header 
+            %td= item.std 
+            %td= item.price
+            %td= item.publisher 
+            %td= item.translate 
+            %td= item.sid
+            %td= item.year
+            %td= item.genre
+            %td= item.series 
+            %td= item.format 
+            %td= item.article
+            %td= item.ean 
+            %td= item.category 
+            %td= item.presence
+            %td
+              = link_to "Показать", nexuse_path(item)
+              = link_to "Редактировать", edit_nexuse_path(item)
+              = link_to "Удалить", item, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    %div#categories
+      %span ...
+    %div#types
+      %span ...
+
+#tab.btn-group{"data-toggle" => "buttons-radio"}
+  %a.btn.btn-large.btn-info.active{"data-toggle" => "tab", href: "#prices2"} Prices
+  %a.btn.btn-large.btn-info{"data-toggle" => "tab", href: "#features2"} Features
+  %a.btn.btn-large.btn-info{"data-toggle" => "tab", href: "#requests2"} Requests
+  %a.btn.btn-large.btn-info{"data-toggle" => "tab", href: "#contact2"} Contact
+.tab-content
+  #prices2.tab-pane.active
+    %br/
+    %p.lead Prices content
+    .row
+      .span3
+        %img{src: "http://placehold.it/200x200"}/
+      .span9
+        %p There are now two rates of Capital Gains Tax (CGT) for individuals. A standard rate of 18% and a higher rate of 28%. The annual exempt amount is still £10,100 for ’10-’11. For more information on CGT please see the factsheet we have put together, which is available to download below.
+  #features2.tab-pane
+    %br/
+    %p.lead Features content
+    .row
+      .span6
+        %p For a full list of our services including support and consultancy for start-up businesses please see the Our Services section of the website. Alternatively if you have a specific service or question in mind please don’t hesitate to contact us to discuss this using the contact details on the Contact Us page of the site.
+      .span6
+        %img{src: "http://placehold.it/400x400"}/
+  #requests2.tab-pane
+    %br/
+    %p.lead Requests content
+    .row
+      .span3
+        %img{src: "http://placehold.it/200x200"}/
+      .span5
+        %p There are now two rates of Capital Gains Tax (CGT) for individuals. A standard rate of 18% and a higher rate of 28%. The annual exempt amount is still £10,100 for ’10-’11. For more information on CGT please see the factsheet we have put together, which is available to download below.
+      .span4
+        %img{src: "http://placehold.it/400x200"}/
+  #contact2.tab-pane
+    %br/
+    %p.lead Contact Us
+    %form.well.span8
+      .row
+        .span3
+          %label First Name
+          %input.span3{placeholder: "Your First Name", type: "text"}/
+          %label Last Name
+          %input.span3{placeholder: "Your Last Name", type: "text"}/
+          %label Email Address
+          %input.span3{placeholder: "Your email address", type: "text"}/
+          %label
+            Subject
+            %select#subject.span3{name: "subject"}
+              %option{selected: "selected", value: "na"} Choose One:
+              %option{value: "service"} General Customer Service
+              %option{value: "suggestions"} Suggestions
+              %option{value: "product"} Product Support
+        .span5
+          %label Message
+          %textarea#message.input-xlarge.span5{name: "message", rows: "10"}
+        %button.btn.btn-primary.pull-right{type: "submit"} Send

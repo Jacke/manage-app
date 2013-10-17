@@ -1,0 +1,80 @@
+%p#notice= notice
+#tab.btn-group{"data-toggle" => "buttons-radio"}
+  %a.btn.btn-large.btn-info.active{"data-toggle" => "tab", href: "#prices2"} Prices
+  %a.btn.btn-large.btn-info{"data-toggle" => "tab", href: "#features2"} Features
+  %a.btn.btn-large.btn-info{"data-toggle" => "tab", href: "#requests2"} Requests
+  %a.btn.btn-large.btn-info{"data-toggle" => "tab", href: "#contact2"} Contact
+.tab-content
+  #prices2.tab-pane.active
+    %br/
+    %p.lead Основное
+    .row
+      %section.main
+        %p
+          sid 
+          =@nexus.sid
+        %p
+          title 
+          =@nexus.title
+        %p
+          pricetax 
+          =@nexus.pricetax
+        %p
+          pages 
+          =@nexus.pages
+        %p
+          year 
+          =@nexus.year
+        %p
+          onpn 
+          =@nexus.onpn
+        %p
+          author 
+          =@nexus.author
+        %p
+          header 
+          =@nexus.header
+        %p
+          std 
+          =@nexus.std
+        %p
+          price 
+          =@nexus.price
+  #features2.tab-pane
+    %br/
+    %p.lead Дополнительное
+    .row
+      %p
+        publisher 
+        =@nexus.publisher
+      %p
+        translate 
+        =@nexus.translate
+      %p
+        year 
+        =@nexus.year
+      %p
+        genre 
+        =@nexus.genre
+      %p
+        series 
+        =@nexus.series
+      %p
+        format 
+        =@nexus.format
+      %p
+        isbn 
+        =@nexus.isbn
+      %p
+        article 
+        =@nexus.article
+      %p
+        ean 
+        =@nexus.ean
+      %p
+        category 
+        =@nexus.category
+
+= link_to 'Редактировать', edit_nexuse_path(@nexus)
+\|
+= link_to 'Назад', nexuses_path
