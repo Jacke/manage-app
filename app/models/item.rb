@@ -22,5 +22,5 @@ class Item
   field :moderation, type: Boolean
   field :category, type: String 
   #field :presence, type: Boolean
-  embeds_many :nexusees
+  embeds_many :nexuses
 end

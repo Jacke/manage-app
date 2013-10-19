@@ -1,80 +1,37 @@
 %p#notice= notice
 #tab.btn-group{"data-toggle" => "buttons-radio"}
-  %a.btn.btn-large.btn-info.active{"data-toggle" => "tab", href: "#prices2"} Prices
-  %a.btn.btn-large.btn-info{"data-toggle" => "tab", href: "#features2"} Features
-  %a.btn.btn-large.btn-info{"data-toggle" => "tab", href: "#requests2"} Requests
-  %a.btn.btn-large.btn-info{"data-toggle" => "tab", href: "#contact2"} Contact
+  %a.btn.btn-large.btn-info.active{"data-toggle" => "tab", href: "#prices2"} Товар
+  %a.btn.btn-large.btn-info{"data-toggle" => "tab", href: "#features2"} Позиции
 .tab-content
   #prices2.tab-pane.active
     %br/
     %p.lead Основное
-    .row
+    .hurow
       %section.main
         %p
-          sid 
-          =@nexus.sid
+          %b Название: 
+          =@item.title
         %p
-          title 
-          =@nexus.title
+          %b Автор: 
+          =@item.author
         %p
-          pricetax 
-          =@nexus.pricetax
+          %b Жанр: 
+          =@item.genre
         %p
-          pages 
-          =@nexus.pages
+          %b Категория: 
+          =@item.category
         %p
-          year 
-          =@nexus.year
-        %p
-          onpn 
-          =@nexus.onpn
-        %p
-          author 
-          =@nexus.author
-        %p
-          header 
-          =@nexus.header
-        %p
-          std 
-          =@nexus.std
-        %p
-          price 
-          =@nexus.price
+          %b Обработка: 
+          =@item.moderation
   #features2.tab-pane
     %br/
-    %p.lead Дополнительное
-    .row
-      %p
-        publisher 
-        =@nexus.publisher
-      %p
-        translate 
-        =@nexus.translate
-      %p
-        year 
-        =@nexus.year
-      %p
-        genre 
-        =@nexus.genre
-      %p
-        series 
-        =@nexus.series
-      %p
-        format 
-        =@nexus.format
-      %p
-        isbn 
-        =@nexus.isbn
-      %p
-        article 
-        =@nexus.article
-      %p
-        ean 
-        =@nexus.ean
-      %p
-        category 
-        =@nexus.category
+    %p.lead Товарные позиции
+    = link_to "Добавить позицию", link_item_path(@item)
+    .hurow
+    - @positions.each do |pos|
+      %p 
+        = link_to "#{pos.title}", nexuse_path(pos)
 
-= link_to 'Редактировать', edit_nexuse_path(@nexus)
+= link_to 'Редактировать товар', edit_item_path(@item)
 \|
-= link_to 'Назад', nexuses_path
+= link_to 'Назад', items_path

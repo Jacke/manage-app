@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_users, only: [:destroy, :edit]
+  before_action :set_users, only: [:destroy, :edit, :update]
 
   # GET /users
   # GET /users.json
@@ -22,6 +22,17 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  def update
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to users_path, notice: 'item was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -30,7 +41,7 @@ class UsersController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white user through.
-    def list_params
+    def user_params
       params[:user]
     end
 end

@@ -6,22 +6,19 @@
         - @item.errors.full_messages.each do |msg|
           %li= msg
   .field
-    = f.label ":title"
+    = f.label "Название"
     = f.text_field :title
   .field
-    = f.label ":onpn"
-    = f.text_field :onpn
+    = f.label "Автор"
+    = select(:item, :author, @author, {}, { :class => 'selectpicker', :data => {"live-search" => "true"}})
   .field
-    = f.label ":author"
-    = f.text_field :author 
+    = f.label "Жанр"
+    = select(:item, :genre, @genre, {}, { :class => 'selectpicker', :data => {"live-search" => "true"}})
   .field
-    = f.label ":publisher"
-    = f.text_field :publisher 
+    = f.label "Категория"
+    = select(:item, :category, @category, {}, { :class => 'selectpicker', :data => {"live-search" => "true"}})
   .field
-    = f.label ":genre"
-    = f.text_field :genre
-  .field
-    = f.label ":category"
-    = f.text_field :category 
+    = f.label "Издатель"
+    = select(:item, :publisher, @publisher, {}, { :class => 'selectpicker', :data => {"live-search" => "true"}})
   .actions
-    = f.submit 'Save'
+    = f.submit 'Сохранить'

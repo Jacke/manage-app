@@ -4,6 +4,14 @@ Manage::Application.routes.draw do
 
   resources :lists
   resources :users
+  resources :items do
+    member do
+      get '/link' => 'items#link'
+      get '/approve' => 'items#approve'
+    end
+  end
+  put '/link_position' => 'items#link_position', :as => :link_position
+
   resources :nexuse_reports, :only => [:index]
   get '/long' => 'nexuse_reports#long'
   get '/category' => 'nexuse_reports#category', :as => :nexuse_category

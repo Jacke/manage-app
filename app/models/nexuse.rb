@@ -24,7 +24,7 @@ class Nexuse
   field :category, type: String 
   field :presence, type: Boolean
   # Item link
-  field :item_id, type: Integer
+  field :item_id, type: String
   PRESENCE = "presence"
   NOTPRESENT = "notpresent"
   scope :presence, where(presence: true)

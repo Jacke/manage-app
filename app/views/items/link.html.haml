@@ -1,0 +1,35 @@
+%h1 Связывание товара с позицией
+= form_for :position, :url => link_position_path, :method => 'put' do |f|
+  %h2 По названию
+  //- if @item.errors.any?
+  //  #error_explanation
+  //    %h2= "#{pluralize(@item.errors.count, "error")} prohibited this item from being saved:"
+  //    %ul
+  //      - @item.errors.full_messages.each do |msg|
+  //        %li= msg
+  .field
+    = f.hidden_field :item, value: @item.id
+    = f.label ":article"
+    //= select(:items, :article, @items, {}, { :class => 'selectpicker', :data => {"live-search" => "true"}})
+    = select_tag "article", options_from_collection_for_select(@items, "article", "title"), { :class => 'selectpicker', :data => {"live-search" => "true"}} 
+  .actions
+    = f.submit 'Сохранить', class: 'button'
+
+= form_for :position, :url => link_position_path, :method => 'put' do |f|
+  %h2 По артиклю
+  //- if @item.errors.any?
+  //  #error_explanation
+  //    %h2= "#{pluralize(@item.errors.count, "error")} prohibited this item from being saved:"
+  //    %ul
+  //      - @item.errors.full_messages.each do |msg|
+  //        %li= msg
+  .field
+    = f.hidden_field :item, value: @item.id
+    = f.label ":article"
+    = f.text_field :article
+  .actions
+    = f.submit 'Сохранить', class: 'button'
+/%select.selectpicker{:data => {"live-search" => "true"}}
+/  %option Mustard
+/  %option Ketchup
+/  %option Relish

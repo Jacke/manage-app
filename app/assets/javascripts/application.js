@@ -13,7 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require bootstrap-select
 //= require_tree .
+$( document ).ready(function() {
+$('.selectpicker').selectpicker();
 $('div.btn-group button').click(function(){
 
     if ($(this).children('input[name="is_pending"]').val() == 0) {
@@ -27,3 +30,4 @@ $('div.btn-group button').click(function(){
     }
 
 })
+});
