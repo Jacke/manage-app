@@ -25,6 +25,8 @@
               %td= item.genre
               %td= item.category 
               %td= item.moderation
+              %td= item.price
+              %td= item.visibility
               - Nexuse.where(item_id: item.id).to_a.each do |i|
                 %td= link_to "#{i.title}", nexuse_path(i)
               %td

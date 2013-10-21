@@ -8,6 +8,24 @@
   .field
     = f.label "Название"
     = f.text_field :title
+  .field 
+    = f.label "price"
+    = f.number_field :price
+  .field
+    = f.label "old_price"
+    = f.number_field :old_price
+  .field 
+    = f.label "Видимость"
+    = f.text_field :visibility, value: false
+  .field 
+    = f.label "Вес"
+    = f.number_field :weight
+  .field
+    = f.label "description"
+    = f.text_field :description
+  .field
+    = f.label "meta_tags"
+    = f.text_field :meta_tags
   .field
     = f.label "Автор"
     = select(:item, :author, @author, {}, { :class => 'selectpicker', :data => {"live-search" => "true"}})
