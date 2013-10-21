@@ -1,6 +1,7 @@
 class Suplier
   include Mongoid::Document
   field :sid,   type: String
+  # fields for supliers
   field :title, type: Integer
   field :pricetax, type: Integer
   field :pages,   type: Integer
