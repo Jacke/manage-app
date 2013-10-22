@@ -8,7 +8,7 @@ class NexuseReportsController < ApplicationController
     @assets = @nexuse_report.assets.page(params[:page])
   end
   def long
-    @nexuse_report = NexuseReportLong.new(params[:nexuse_report])
+    @nexuse_report = NexuseReport.new(params[:nexuse_report])
     @assets = @nexuse_report.assets.page(params[:page])
     render :action => :index 
   end

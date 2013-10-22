@@ -14,7 +14,7 @@
       %td= list.sid
       %td
         - unless list.parsed
-          %a{href: "http://88.198.200.85:8081/diff?timestamp=#{list.timestamp}"} Сравнить
+          %a{href: "http://knigi.ua:8081/diff?timestamp=#{list.timestamp}"} Сравнить
       %td= list.timestamp
       %td
         = link_to "Удалить", list, :method => :delete, :data => { :confirm => 'Are you sure?' }

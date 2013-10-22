@@ -12,6 +12,7 @@
       %table.table.table-striped
         %tr
           %th Title
+          %th Article
           %th Pages
           %th ISBN
           %th pricetax
@@ -36,6 +37,7 @@
         - @nexuses.each do |item|
           %tr
             %td= item.title
+            %td= item.article
             %td= item.pages
             %td= item.isbn
             %td= item.pricetax

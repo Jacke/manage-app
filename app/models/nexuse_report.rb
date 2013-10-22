@@ -23,6 +23,7 @@ class NexuseReport
     where(:isbn => /#{Regexp.escape(value)}/i)
   end
   column(:title)
+  column(:article)
   column(:pricetax)
   column(:pages)
   column(:year)

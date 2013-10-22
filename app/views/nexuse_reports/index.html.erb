@@ -15,7 +15,9 @@
      <%#= paginate(@assets) %>
      
      <%= datagrid_table @nexuse_report, @assets %>
-     <%= paginate(@assets) %>
+     <div class="pager">
+       <%= paginate(@assets) %>
+     </div>
     </div>
   </div>
   <!--<div class="tab-pane" id="features2">

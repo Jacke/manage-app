@@ -26,3 +26,11 @@ div.btn-group[data-toggle=buttons-radio] input[type=radio] {
   opacity:    hidden;
   visibility: hidden;
 }
+.pager {
+margin: 20px 0;
+list-style: none;
+text-align: center;
+display: inline-block;
+margin-top: -47px !important;
+}
+
