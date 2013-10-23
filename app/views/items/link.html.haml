@@ -26,7 +26,10 @@
   .field
     = f.hidden_field :item, value: @item.id
     = f.label ":article"
-    = f.text_field :article
+    - if params[:position]
+      = f.text_field :article, value: Nexuse.find(params[:position]).article
+    - else
+      = f.text_field :article
   .actions
     = f.submit 'Сохранить', class: 'button'
 /%select.selectpicker{:data => {"live-search" => "true"}}

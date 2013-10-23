@@ -1,11 +1,14 @@
 class Item
   include Mongoid::Document
+  include Mongoid::Search
+  
   field :title, type: String
+  field :item_type, type: String
   #field :pricetax, type: String
   #field :pages,   type: Integer
   #field :year, type: Integer
   #field :onpn, type: String 
-  field :author, type: String 
+  field :author, type: Array 
   #field :header, type: String 
   #field :std, type: String 
   #field :price, type: String
@@ -29,4 +32,5 @@ class Item
   field :category, type: String 
   #field :presence, type: Boolean
   embeds_many :nexuses
+  search_in :title, :author# => :author
 end

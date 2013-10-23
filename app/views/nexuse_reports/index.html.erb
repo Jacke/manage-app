@@ -1,6 +1,6 @@
 <div id="tab" class="btn-group" data-toggle="buttons-radio">
-  <a href="/nexuse_reports" class="btn btn-large btn-info">Base</a>
-  <a href="/long" class="btn btn-large btn-info">Long</a>
+  <a href="/nexuse_reports" class="btn btn-large btn-info">Краткий вид</a>
+  <a href="/long" class="btn btn-large btn-info">Подробный вид</a>
   <!--<a href="#requests2" class="btn btn-large btn-info" data-toggle="tab">Categories</a>
   <a href="#features2" class="btn btn-large btn-info" data-toggle="tab">Something</a>-->
 </div>
@@ -8,10 +8,10 @@
 <div class="tab-content">
   <div class="tab-pane active" id="base">
     <br>
-    <p class="lead">Base</p>
+    <p class="lead">Краткий вид</p>
     <div class="row">
      <%= datagrid_form_for @nexuse_report, :method => :get, :url => nexuse_reports_path %>
-     <div class='total'>Total: <%#= @grid.assets.count %></div>
+     <div class='total'>Всего: <%= @assets.count %></div>
      <%#= paginate(@assets) %>
      
      <%= datagrid_table @nexuse_report, @assets %>

@@ -17,6 +17,7 @@ Manage::Application.routes.draw do
   get '/category' => 'nexuse_reports#category', :as => :nexuse_category
   get '/category/new' => 'nexuse_reports#new_category', :as => :new_category
   post '/category/new' => 'nexuse_reports#create_category', :as => :create_category
+  delete '/category/delete/:id' => 'nexuse_reports#destroy', :as => :category
   get '/flush' => 'nexuses#destroy_all', :as => :flush_db
   #####
   # Auth

@@ -1,6 +1,7 @@
 class Nexuse
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Search
   field :title, type: String
   field :pricetax, type: String
   field :pages,   type: Integer
@@ -30,6 +31,13 @@ class Nexuse
   scope :presence, where(presence: true)
   scope :notpresent, where(presence: false)
  # scope :recommend, where(recommend: true)
+
+  search_in :title, :author
+
+  field :reindexed, type: Boolean, default: false
+  def self.reindex
+    Nexuse.where(reindexed: false).each {|n| n.reindexed = true; n.save}
+  end
   def self.flush
     self.all.each {|i| i.destroy }
   end

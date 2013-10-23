@@ -34,3 +34,6 @@ display: inline-block;
 margin-top: -47px !important;
 }
 
+#nexuse_report_moderation {
+display: none;
+}

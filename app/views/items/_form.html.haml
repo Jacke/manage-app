@@ -5,6 +5,9 @@
       %ul
         - @item.errors.full_messages.each do |msg|
           %li= msg
+  - if params[:position]
+    = f.hidden_field :item, value: params[:position]
+
   .field
     = f.label "Название"
     = f.text_field :title
@@ -16,7 +19,10 @@
     = f.number_field :old_price
   .field 
     = f.label "Видимость"
-    = f.text_field :visibility, value: false
+    = f.select :visibility, [['Видимо', true], ['Невидимо', false]], :selected => false
+  .field 
+    = f.label "Тип"
+    = f.select :item_type, [['Кника', "book"]]
   .field 
     = f.label "Вес"
     = f.number_field :weight
@@ -28,7 +34,7 @@
     = f.text_field :meta_tags
   .field
     = f.label "Автор"
-    = select(:item, :author, @author, {}, { :class => 'selectpicker', :data => {"live-search" => "true"}})
+    = select(:item, :author, @author, {}, {:multiple => true, :class => 'selectpicker', :data => {"live-search" => "true"}})
   .field
     = f.label "Жанр"
     = select(:item, :genre, @genre, {}, { :class => 'selectpicker', :data => {"live-search" => "true"}})

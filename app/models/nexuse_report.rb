@@ -33,6 +33,7 @@ class NexuseReport
   column(:std)
   column(:price)
   column(:presence)
+
   column(:actions, :html => true)  { |asset| 
                                      link_to "Показать", nexuse_path(asset)
                                      #link_to "Редактировать", edit_nexuse_path(asset)

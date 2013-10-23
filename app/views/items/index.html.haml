@@ -1,6 +1,7 @@
 %section.items
   %h1 Товары — Главная база
   = link_to "Все товары", items_path
+  = link_to "Видимые товары", items_path(visibility: true)
   = link_to "Обработанные товары", items_path(moderation: true)
   = link_to "Требуемые обработки", items_path(moderation: false)
   = link_to "Новый товар", new_item_path

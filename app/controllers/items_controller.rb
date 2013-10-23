@@ -5,11 +5,14 @@ def index
     logger.info(params[:moderation])
     @items = Item.where(moderation: true).to_a  if params[:moderation]
     @items = Item.where(moderation: false).to_a if params[:moderation] == "false"
-    @items = Item.all.to_a unless params[:moderation].present?
+    @items = Item.where(visibility: true).to_a if params[:visibility] 
+    @items = Item.all.to_a unless params[:moderation].present? 
 
 end
   def show
+    @item = Item.find(params[:id])
     @positions = Nexuse.where(item_id: params[:id]).to_a
+    @similar = Nexuse.full_text_search(@item.title)
   end
   def new
     @item = Item.new
@@ -19,6 +22,10 @@ end
     @category = Nexuse.all.distinct(:category)
   end
   def create
+    logger.info(item_params)
+    item_params["author"] = item_params["author"].delete("")
+    logger.info(item_params)
+    
     @item = Item.new(item_params)
 
     respond_to do |format|
@@ -41,7 +48,13 @@ end
     respond_to do |format|
       if @item.update(item_params)
         @item.update_attribute(:moderation, true)
-        format.html { redirect_to @item, notice: 'item was successfully updated.' }
+        
+        if params[:position]
+          format.html { redirect_to link_item_path(position: params[:position]), notice: 'item was successfully updated.' }
+        else
+          format.html { redirect_to @item, notice: 'item was successfully updated.' }
+        end
+        
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -87,6 +100,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:title, :author, :publisher, :genre, :moderation, :category)     
+      params.require(:item).permit(:title, :publisher, :genre, :moderation, :category, :price, :old_price, :visibility, :item_type, :weight, :description, :meta_tags, :author => [])     
     end
 end

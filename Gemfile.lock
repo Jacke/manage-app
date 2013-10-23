@@ -66,6 +66,7 @@ GEM
     diff-lcs (1.2.4)
     erubis (2.7.0)
     execjs (2.0.2)
+    fast-stemmer (1.0.2)
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
@@ -100,6 +101,11 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25)
     minitest (4.7.5)
+    mongoid-tree (1.0.4)
+      mongoid (>= 3.0, <= 4.0)
+    mongoid_search (0.3.2)
+      fast-stemmer (~> 1.0.0)
+      mongoid (>= 3.0.0)
     moped (2.0.0.beta)
       bson (~> 2.0.0.rc2)
       optionable (~> 0.1.1)
@@ -197,6 +203,8 @@ DEPENDENCIES
   jquery-rails
   kaminari
   mongoid!
+  mongoid-tree
+  mongoid_search
   protected_attributes
   quiet_assets
   rails (= 4.0.0)

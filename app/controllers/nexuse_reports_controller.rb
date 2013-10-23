@@ -14,14 +14,17 @@ class NexuseReportsController < ApplicationController
   end
   
   def category
-    @categories = Nexuse.distinct(:category)
-    @genres = Nexuse.distinct(:genre)
-    @formats = Nexuse.distinct(:format)
-    @authors = Nexuse.distinct(:author)
-    @categories << user_categories("category")
-    @genres << user_categories("genre")
-    @formats << user_categories("format")
-    @authors << user_categories("author")
+    @categories_root = Category.root
+
+    #@genres = Nexuse.distinct(:genre)
+    #@formats = Nexuse.distinct(:format)
+    #@authors = Nexuse.distinct(:author)
+    @categories = user_categories("category").roots
+    @categories = @categories.to_a unless @categories.kind_of?(Array)
+    @genres = user_categories("genre").roots
+    @genres = @genres.to_a unless @genres.kind_of?(Array)
+    @formats = user_categories("format")
+    @authors = user_categories("author")
   end
   
   def create_category
@@ -37,12 +40,21 @@ class NexuseReportsController < ApplicationController
   end
 
   def new_category
+    @all_categories = Category.all
     @category = Category.new
+  end
+  def destroy
+    @list = Category.find(params[:id])
+    @list.destroy
+    respond_to do |format|
+      format.html { redirect_to nexuse_category_url }
+      format.json { head :no_content }
+    end
   end
 
   private
   def user_categories(type)
-    Category.where(type: type).pluck(:title)
+    Category.where(type: type)
   end
 end
 

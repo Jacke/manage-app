@@ -1,9 +1,9 @@
 %p#notice= notice
 #tab.btn-group{"data-toggle" => "buttons-radio"}
-  %a.btn.btn-large.btn-info.active{"data-toggle" => "tab", href: "#prices2"} Prices
-  %a.btn.btn-large.btn-info{"data-toggle" => "tab", href: "#features2"} Features
-  %a.btn.btn-large.btn-info{"data-toggle" => "tab", href: "#requests2"} Requests
-  %a.btn.btn-large.btn-info{"data-toggle" => "tab", href: "#contact2"} Contact
+  %a.btn.btn-large.btn-info.active{"data-toggle" => "tab", href: "#prices2"} Основное
+  %a.btn.btn-large.btn-info{"data-toggle" => "tab", href: "#features2"} Дополнительное
+  //%a.btn.btn-large.btn-info{"data-toggle" => "tab", href: "#requests2"} Requests
+  //%a.btn.btn-large.btn-info{"data-toggle" => "tab", href: "#contact2"} Contact
 .tab-content
   #prices2.tab-pane.active
     %br/
@@ -74,7 +74,14 @@
       %p
         category 
         =@nexus.category
-
+  - @similar_item.each do |item|
+      %p 
+        = link_to "#{item.title} связать", link_item_path(@item, position: @nexus.id)
+  %p ИЛИ
+    = link_to "сделать новый товар", new_item_path(position: @nexus.id)
+  - @similar.each do |sim|
+      %p 
+        = link_to "#{sim.title}", nexuse_path(sim)
 = link_to 'Редактировать', edit_nexuse_path(@nexus)
 \|
 = link_to 'Назад', nexuses_path

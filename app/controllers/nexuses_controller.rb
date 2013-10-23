@@ -13,6 +13,9 @@ end
   # GET /nexuses/1
   # GET /nexuses/1.json
   def show
+    @position = Nexuse.find(params[:id])
+    @similar = Nexuse.full_text_search(@position.title).union.full_text_search(@position.author)
+    @similar_item = Item.full_text_search(@position.title).union.full_text_search(@position.author)
   end
 
   # GET /nexuses/new
