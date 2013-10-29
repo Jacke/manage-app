@@ -20,9 +20,10 @@
   .field 
     = f.label "Видимость"
     = f.select :visibility, [['Видимо', true], ['Невидимо', false]], :selected => false
-  .field 
-    = f.label "Тип"
-    = f.select(:item, :item_type, @types)
+  - if @types.present?
+    .field 
+      = f.label "Тип"
+      = f.select(:item, :item_type, @types)
   .field 
     = f.label "Вес"
     = f.number_field :weight
