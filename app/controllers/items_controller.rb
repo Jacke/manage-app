@@ -16,10 +16,10 @@ end
   end
   def new
     @item = Item.new
-    @author = Nexuse.all.distinct(:author)
-    @publisher = Nexuse.all.distinct(:publisher) 
-    @genre = Nexuse.all.distinct(:genre)
-    @category = Nexuse.all.distinct(:category)
+    @author = Category.where(type: "author").distinct(:title)
+    @publisher = Category.where(type: "publisher").distinct(:title) 
+    @genre = Category.where(type: "genre").distinct(:title)
+    @category = Category.where(type: "category").distinct(:title)
   end
   def create
     logger.info(item_params)
