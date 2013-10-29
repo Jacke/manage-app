@@ -1,0 +1,19 @@
+%h1 Типы товара
+
+%table.table
+  %tr
+    %th Название
+    %th
+    %th
+    %th
+  - if @types.present?
+    - @types.each do |type|
+      %tr
+        %td= type.title
+        %td= link_to 'Показать', type
+        %td= link_to 'Редактировать', edit_suplier_path(type)
+        %td= link_to 'Удалить', type, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'Новый поставщик', new_item_type_path
