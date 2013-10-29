@@ -35,5 +35,6 @@ Manage::Application.routes.draw do
   get '/upload' => 'lists#upload', :as => :list_upload
 
   resources :supliers
+  resources :item_types
   root :to => 'nexuse_reports#index'
 end

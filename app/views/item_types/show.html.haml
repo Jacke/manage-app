@@ -1,0 +1,10 @@
+%p#notice= notice
+
+%p
+  title 
+  =@item_type.title
+
+
+= link_to 'Редактировать', edit_item_type_path(@item_type)
+\|
+= link_to 'Назад', item_types_path
