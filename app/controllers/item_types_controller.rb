@@ -14,7 +14,7 @@ class ItemTypesController < ApplicationController
 
   # GET /supliers/new
   def new
-    @suplier = ItemType.new
+    @item_type = ItemType.new
   end
 
   # GET /supliers/1/edit
@@ -24,7 +24,7 @@ class ItemTypesController < ApplicationController
   # POST /supliers
   # POST /supliers.json
   def create
-    @item_type = ItemType.new(suplier_params)
+    @item_type = ItemType.new(item_type_params)
 
     respond_to do |format|
       if @item_type.save
@@ -41,7 +41,7 @@ class ItemTypesController < ApplicationController
   # PATCH/PUT /supliers/1.json
   def update
     respond_to do |format|
-      if @item_type.update(suplier_params)
+      if @item_type.update(item_type_params)
         format.html { redirect_to @item_type, notice: 'ItemType was successfully updated.' }
         format.json { head :no_content }
       else
@@ -56,7 +56,7 @@ class ItemTypesController < ApplicationController
   def destroy
     @item_type.destroy
     respond_to do |format|
-      format.html { redirect_to supliers_url }
+      format.html { redirect_to item_types_url }
       format.json { head :no_content }
     end
   end
@@ -68,7 +68,7 @@ class ItemTypesController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def type_params
+    def item_type_params
       params[:item_type]
     end
 end

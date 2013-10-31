@@ -12,7 +12,7 @@ end
   def show
     @item = Item.find(params[:id])
     @positions = Nexuse.where(item_id: params[:id]).to_a
-    @similar = Nexuse.full_text_search(@item.title)
+    @similar = Nexuse.full_text_search(@item._keywords)
   end
   def new
     @item = Item.new
@@ -20,6 +20,7 @@ end
     @publisher = Category.where(type: "publisher").distinct(:title) 
     @genre = Category.where(type: "genre").distinct(:title)
     @category = Category.where(type: "category").distinct(:title)
+    @related_pos = Nexuse.find(params[:position]) if params[:position]
   end
   def create
     logger.info(item_params)

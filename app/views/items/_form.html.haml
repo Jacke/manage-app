@@ -1,3 +1,6 @@
+- if @similar_pos.present?
+  %p= @similar_pos.title
+
 = form_for @item do |f|
   - if @item.errors.any?
     #error_explanation
