@@ -1,18 +1,19 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy, :link]
 
-def index
+  def index
     logger.info(params[:moderation])
     @items = Item.where(moderation: true).to_a  if params[:moderation]
     @items = Item.where(moderation: false).to_a if params[:moderation] == "false"
     @items = Item.where(visibility: true).to_a if params[:visibility] 
     @items = Item.all.to_a unless params[:moderation].present? 
 
-end
+  end
   def show
     @item = Item.find(params[:id])
     @positions = Nexuse.where(item_id: params[:id]).to_a
     @similar = Nexuse.full_text_search(@item._keywords)
+    @type_fields = @item.item_type.type_fields
   end
   def new
     @item = Item.new
@@ -21,6 +22,8 @@ end
     @genre = Category.where(type: "genre").distinct(:title)
     @category = Category.where(type: "category").distinct(:title)
     @related_pos = Nexuse.find(params[:position]) if params[:position]
+    @item_type = ItemType.find(params[:item_type])
+    @item_fields = @item_type.type_fields
   end
   def create
     logger.info(item_params)
@@ -39,6 +42,22 @@ end
       end
     end
   end
+
+  def update_fields
+     logger.info("++++++++++++++++++++++++++++++")
+     @item = Item.find(params[:id])
+     # get required fields
+     fields = []
+     @item.item_type.type_fields.each {|f| fields << (f.id.to_s) }
+     # collect fields
+     
+     prop_attr = []
+     fields.each { |f| prop_attr << params[f] }
+     logger.info(prop_attr)
+     @item.update_attributes(prop_assigns_attributes: prop_attr) if prop_attr.present?
+     redirect_to item_path(params[:id])
+  end
+
   def edit
     #find positions
     # position article

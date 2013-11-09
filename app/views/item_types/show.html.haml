@@ -1,14 +1,16 @@
 %p#notice= notice
-
-%p
-  Название типа 
-  =@item_type.title
-
-%p 
-  Поля типа:
-  - if @item_type.item_props.present?
-    - @item_type.item_props.each do |prop|
-      %span= "| #{prop.title} |"
-= link_to 'Редактировать тип', edit_item_type_path(@item_type)
-\|
-= link_to 'Назад', item_types_path
+.container
+  .row-fluid
+    %div#legend
+      %legend Тип товара
+    %p
+      Название типа 
+      =@item_type.title
+    %p 
+      = link_to "Поля типа:", item_type_type_fields_path(item_type_id: @item_type.id)
+      - if @item_type.type_fields.present?
+        - @item_type.type_fields.each do |prop|
+          %span= "| #{prop.title} |"
+    = link_to 'Редактировать тип', edit_item_type_path(@item_type)
+    \|
+    = link_to 'Назад', item_types_path

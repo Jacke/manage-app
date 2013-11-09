@@ -8,7 +8,9 @@
   %p
     %b Цена
     = @related_pos.price
-= form_for @item do |f|
+- @item_fields.each do |field|
+  = field.title
+= form_for @item,  html: { class: "form span3 clearfix new_item" } do |f|
   - if @item.errors.any?
     #error_explanation
       %h2= "#{pluralize(@item.errors.count, "error")} prohibited this item from being saved:"
@@ -17,7 +19,8 @@
           %li= msg
   - if params[:position]
     = f.hidden_field :item, value: params[:position]
-
+  - if params[:item_type_id]
+    = f.hidden_field :item_type_id, value: params[:item_type_id]
   .field
     = f.label "Название"
     = f.text_field :title, value: (@related_pos.title if @related_pos.present?)

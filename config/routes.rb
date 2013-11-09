@@ -13,12 +13,14 @@ Manage::Application.routes.draw do
     member do
       get '/link' => 'items#link'
       get '/approve' => 'items#approve'
+      patch '/update_fields' => 'items#update_fields'
+      post '/update_fields' => 'items#update_fields'
     end
   end
   put '/link_position' => 'items#link_position', :as => :link_position
 
   resources :item_types do
-    resources :type_fields
+    resources :type_fields, except: :show
   end
 
   resources :authors do

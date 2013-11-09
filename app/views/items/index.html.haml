@@ -5,11 +5,13 @@
   = link_to "Обработанные товары", items_path(moderation: true)
   = link_to "Требуемые обработки", items_path(moderation: false)
   = link_to "Новый товар", new_item_path
+  = link_to "Новая книга", new_item_path(item_type: "5da12f086b6e691599030000")
   %div.tabs-content
     %div.active#db
       %table.table.table-striped
         %tr
           %th title
+          %th Тип
           %th author 
           %th publisher 
           %th genre
@@ -21,6 +23,7 @@
           - @items.each do |item|
             %tr
               %td= item.title
+              %td= item.item_type.title
               %td= item.author 
               %td= item.publisher 
               %td= item.genre

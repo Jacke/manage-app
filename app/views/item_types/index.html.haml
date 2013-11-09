@@ -12,8 +12,8 @@
       %tr
         %td= type.title
         %td
-          - if type.item_props.present?
-            - type.item_props.each do |prop|
+          - if type.type_fields.present?
+            - type.type_fields.each do |prop|
               = "| #{prop.title} |"
         %td= link_to 'Показать', type
         %td= link_to 'Редактировать', edit_item_type_path(type)

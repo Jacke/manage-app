@@ -4,7 +4,7 @@ class Item
   
   field :title, type: String
   field :item_type_id, type: BSON::ObjectId
-  has_one :item_type
+  belongs_to :item_type
  #field :pricetax, type: String
   #field :pages,   type: Integer
   #field :year, type: Integer
@@ -35,6 +35,6 @@ class Item
   embeds_many :nexuses
   has_many :publishers
   has_many :prop_assigns
-   accepts_nested_attributes_for :prop_assigns
+  accepts_nested_attributes_for :prop_assigns
   search_in :title, :author# => :author
 end
