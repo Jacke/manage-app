@@ -32,6 +32,36 @@ div.btn-group[data-toggle=buttons-radio] input[type=radio] {
   opacity:    hidden;
   visibility: hidden;
 }
+.clearthis {clear: both;}
+.items-create {
+float: right;
+width: 330px;
+margin-top: 5px;
+margin-bottom: -26px;
+}
+.later {
+float: left;
+padding-left: 25px;
+padding-top: 17px;
+}
+.show-item-btn {display: block !important;}
+.actions.item-form {
+clear: both;
+margin-left: -20px;
+margin-bottom: -10px;
+padding-top: 55px;
+}
+.prop-fields {
+float: left;
+margin-top: 30px;
+padding-right: 47px;
+}
+.show-item {
+width: 400px;
+overflow: visible;
+float: left;
+margin-left: 16px;
+}
 .pager {
 margin: 20px 0;
 list-style: none;

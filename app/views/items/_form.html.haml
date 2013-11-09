@@ -8,9 +8,7 @@
   %p
     %b Цена
     = @related_pos.price
-- @item_fields.each do |field|
-  = field.title
-= form_for @item,  html: { class: "form span3 clearfix new_item" } do |f|
+= form_for @item,  html: { class: "form span11 clearfix new_item" } do |f|
   - if @item.errors.any?
     #error_explanation
       %h2= "#{pluralize(@item.errors.count, "error")} prohibited this item from being saved:"
@@ -19,45 +17,52 @@
           %li= msg
   - if params[:position]
     = f.hidden_field :item, value: params[:position]
-  - if params[:item_type_id]
-    = f.hidden_field :item_type_id, value: params[:item_type_id]
-  .field
-    = f.label "Название"
-    = f.text_field :title, value: (@related_pos.title if @related_pos.present?)
-  .field 
-    = f.label "price"
-    = f.number_field :price, value: (@related_pos.price if @related_pos.present?)
-  .field
-    = f.label "old_price"
-    = f.number_field :old_price
-  .field 
-    = f.label "Видимость"
-    = f.select :visibility, [['Видимо', true], ['Невидимо', false]], :selected => false
-  - if @types.present?
-    .field 
-      = f.label "Тип"
-      = f.select(:item, :item_type, @types)
-  .field 
-    = f.label "Вес"
-    = f.number_field :weight
-  .field
-    = f.label "description"
-    = f.text_field :description
-  .field
-    = f.label "meta_tags"
-    = f.text_field :meta_tags
-  .field
-    = f.label "Автор"
-    =# text_field(:item, :author, :id => "e7")
-    = select(:item, :author, @author, {}, {:multiple => true, :class => 'selectpicker', :data => {"live-search" => "true"}})
-  .field
-    = f.label "Жанр"
-    = select(:item, :genre, @genre, {}, { :class => 'selectpicker', :data => {"live-search" => "true"}})
-  .field
-    = f.label "Категория"
-    = select(:item, :category, @category, {}, { :class => 'selectpicker', :data => {"live-search" => "true"}})
-  .field
-    = f.label "Издатель"
-    = select(:item, :publisher, @publisher, {}, { :class => 'selectpicker', :data => {"live-search" => "true"}})
-  .actions
+  = f.hidden_field :item_type_id, value: params[:item_type]
+  .row.span4
+    .field
+      = f.label "Название"
+      - if @related_pos.present?
+        = f.text_field :title, value: (@related_pos.title)
+      - else
+        = f.text_field :title
+    .field
+      = f.label "price"
+      - if @related_pos.present?
+        = f.number_field :price, value: (@related_pos.price)
+      - else
+        = f.number_field :price
+    .field
+      = f.label "old_price"
+      = f.number_field :old_price
+    .field
+      = f.label "Видимость"
+      = f.select :visibility, [['Видимо', true], ['Невидимо', false]], :selected => false
+    - if @types.present?
+      .field
+        = f.label "Тип"
+        = f.select(:item, :item_type, @types)
+    .field
+      = f.label "description"
+      = f.text_field :description
+  .row.span4
+    .field
+      = f.label "meta_tags"
+      = f.text_field :meta_tags
+    - if @genre.present? && @category.present? && @publisher.present?
+      .field
+        = f.label "Автор"
+        = text_field(:item, :author, :id => "e7")
+        = select(:item, :author, @author, {}, {:multiple => true, :class => 'selectpicker', :data => {"live-search" => "true"}})
+      .field
+        = f.label "Жанр"
+        = select(:item, :genre, @genre, {}, { :class => 'selectpicker', :data => {"live-search" => "true"}})
+      .field
+        = f.label "Категория"
+        = select(:item, :category, @category, {}, { :class => 'selectpicker', :data => {"live-search" => "true"}})
+      .field
+        = f.label "Издатель"
+        = select(:item, :publisher, @publisher, {}, { :class => 'selectpicker', :data => {"live-search" => "true"}})
+  .actions.item-form
     = f.submit 'Сохранить', class: "btn btn-success btn-green"
+
+

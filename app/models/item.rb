@@ -17,7 +17,6 @@ class Item
   field :price, type: Integer
   field :old_price, type: Integer
   field :visibility, type: Boolean
-  field :weight, type: Integer
   field :description, type: String
   field :meta_tags, type: String
   #field :translate, type: String 

@@ -1,6 +1,13 @@
 %h1 Новый товар
 
 = render 'form'
+%div.later
+  Доп. поля для товара:
+  - @item_fields.each do |field|
+    %p
+      %b= field.title
+  %p Вы можете заполнить их после создания товара.
 
-.control.clearfix
+
+.control.clearthis.clearfix
   = link_to 'Отменить', items_path, class: "btn btn-danger btn-sm"

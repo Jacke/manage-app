@@ -1,23 +1,9 @@
 %p#notice= notice
-#tab.btn-group{"data-toggle" => "buttons-radio"}
+#tab.btn-group.show-item-btn{"data-toggle" => "buttons-radio"}
   %a.btn.btn-large.btn-info.active{"data-toggle" => "tab", href: "#prices2"} Товар
   %a.btn.btn-large.btn-info{"data-toggle" => "tab", href: "#features2"} Позиции
-= form_for :prop_assigns, :url => { :action => "update_fields" } do |f|
-  - @item.item_type.type_fields.each do |i|
-    = fields_for i.id.to_s.to_sym do |as|
-      %tr
-        %td= i.title
-        - if i.prop_assigns.first.present?
-          %td= as.text_field :val, value: i.prop_assigns.first.val
-          = as.hidden_field :type_field_id, value: i.id
-        - else
-          %td= as.text_field :val
-          = as.hidden_field :type_field_id, value: i.id
-        - if @item.prop_assigns.where(type_field_id: i.id).to_a.present?
-          = as.hidden_field :id, value: @item.prop_assigns.where(type_field_id: i.id).to_a.first.id
-        = as.hidden_field :item_id, value: params[:id]
-  = f.submit 'Сохранить поля типа'
-.tab-content
+
+.tab-content.show-item
   #prices2.tab-pane.active
     %br/
     %p.lead Основное
@@ -51,9 +37,6 @@
           %b visibility
           =@item.visibility
         %p
-          %b weight
-          =@item.weight
-        %p
           %b description
           =@item.description
         %p
@@ -72,6 +55,26 @@
       %p 
         = link_to "#{sim.title}", nexuse_path(sim)
 
-= link_to 'Редактировать товар', edit_item_path(@item)
-\|
-= link_to 'Назад', items_path
+  = link_to 'Редактировать товар', edit_item_path(@item)
+  \|
+  = link_to 'Назад', items_path
+%div.row.prop-fields
+  .span8
+    = form_for :prop_assigns, html: {class: 'form-horizontal'}, :url => { :action => "update_fields" } do |f|
+      - @item.item_type.type_fields.each do |i|
+        = fields_for i.id.to_s.to_sym do |as|
+          .control-group
+            %label.control-label= i.title
+            - if i.prop_assigns.first.present?
+              .controls
+                = as.text_field :val, value: i.prop_assigns.first.val
+                = as.hidden_field :type_field_id, value: i.id
+            - else
+              .controls
+                = as.text_field :val
+                = as.hidden_field :type_field_id, value: i.id
+            - if @item.prop_assigns.where(type_field_id: i.id).to_a.present?
+              = as.hidden_field :id, value: @item.prop_assigns.where(type_field_id: i.id).to_a.first.id
+            = as.hidden_field :item_id, value: params[:id]
+      = f.submit 'Сохранить поля типа', class: "btn btn-small btn-primary"
+

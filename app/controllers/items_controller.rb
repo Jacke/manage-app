@@ -5,8 +5,8 @@ class ItemsController < ApplicationController
     logger.info(params[:moderation])
     @items = Item.where(moderation: true).to_a  if params[:moderation]
     @items = Item.where(moderation: false).to_a if params[:moderation] == "false"
-    @items = Item.where(visibility: true).to_a if params[:visibility] 
-    @items = Item.all.to_a unless params[:moderation].present? 
+    @items = Item.where(visibility: true).to_a if params[:visibility] == "true" 
+    @items = Item.all.to_a unless params[:moderation].present? || params[:visibility].present? 
 
   end
   def show
@@ -62,6 +62,7 @@ class ItemsController < ApplicationController
     #find positions
     # position article
     # link_position(params)
+    @item_fields = @item.item_type.type_fields
   end
 
   def update
@@ -120,6 +121,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:title, :publisher, :genre, :moderation, :category, :price, :old_price, :visibility, :item_type, :weight, :description, :meta_tags, :author => [])     
+      params.require(:item).permit(:title, :item_type_id, :publisher, :genre, :moderation, :category, :price, :old_price, :visibility, :item_type, :weight, :description, :meta_tags, :author => [])     
     end
 end

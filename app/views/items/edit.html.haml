@@ -1,7 +1,13 @@
 %h1 Редактирование товара
 
 = render 'form'
+%div.later
+  = link_to "Доп. поля для товара:", @item
+  - @item_fields.each do |field|
+    %p
+      %b= field.title
+.controls.clearthis
+  = link_to 'Показать', @item, class: "btn btn-primary btn-sm"
+  \|
+  = link_to 'Назад', items_path, class: "btn btn-danger btn-sm"
 
-= link_to 'Показать', @item
-\|
-= link_to 'Назад', items_path
