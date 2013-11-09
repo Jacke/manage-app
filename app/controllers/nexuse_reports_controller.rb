@@ -27,7 +27,14 @@ class NexuseReportsController < ApplicationController
     @authors = user_categories("author")
   end
   def authors_list
-    @authors = Category.where(type: 'author').full_text_search(params[:q])
+    if params[:q].present?
+    @authors = Author.all.full_text_search(params[:q])
+    else
+    @authors = Author.all
+    end
+    @authors = @authors.map do |i|
+      { label: i.name, value: i.name }
+    end
     render :json => @authors.to_json # don't do msg.to_json
   end
 

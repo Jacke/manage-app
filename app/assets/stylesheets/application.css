@@ -12,12 +12,13 @@
  *= require_tree .
  *= require bootstrap
  *= require bootstrap-select
+ *= require jquery-ui
  */
 .filters .btn-group {
 margin-left: -12px;
 }
 .navbar {
-width: 1091px;
+width: 1191px;
 margin: 0 auto;
 margin-left: auto !important;
 padding-top: 5px;

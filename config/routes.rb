@@ -22,6 +22,7 @@ Manage::Application.routes.draw do
   resources :item_types do
     resources :type_fields, except: :show
   end
+  get '/category/authors' => 'nexuse_reports#authors_list'
 
   resources :authors do
     resources :creations

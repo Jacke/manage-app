@@ -12,10 +12,42 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require bootstrap
 //= require bootstrap-select
 //= require_tree .
 $( document ).ready(function() {
+function split( val ) {
+      return val.split( /,\s*/ );
+    }
+    function extractLast( term ) {
+      return split( term ).pop();
+    }
+$("#q").autocomplete({
+  delay: 100,
+  minLength: 2,
+  source: function(request, response) {
+    return $.getJSON("../../category/authors", {
+      q: request.term
+    }, function(result) {
+      return response(result);
+    });
+  },
+  select: function(event, ui) {
+    var terms = split( this.value );
+    // remove the current input
+    terms.pop();
+    // add the selected item
+    terms.push( ui.item.value );
+    // add placeholder to get the comma-and-space at the end
+    terms.push( "" );
+    this.value = terms.join( ", " );
+    return false;
+    //  window.location = ui.item.name;
+    //  return false;
+  }
+}); 
+
 $('.selectpicker').selectpicker();
 $('div.btn-group button').click(function(){
 
