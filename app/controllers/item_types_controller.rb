@@ -1,5 +1,5 @@
 class ItemTypesController < ApplicationController
-  before_action :set_item_type, only: [:show, :edit, :update, :destroy]
+  before_action :set_item_type, only: [:show, :edit, :edit_fields, :update, :destroy]
 
   # GET /supliers
   # GET /supliers.json
@@ -21,6 +21,8 @@ class ItemTypesController < ApplicationController
   def edit
   end
 
+  def edit_fields
+  end
   # POST /supliers
   # POST /supliers.json
   def create

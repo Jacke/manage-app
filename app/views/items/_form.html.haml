@@ -1,6 +1,13 @@
-- if @similar_pos.present?
-  %p= @similar_pos.title
-
+- if @related_pos.present?
+  %p
+    %b Наименование
+    = @related_pos.title
+  %p
+    %b Автор
+    = @related_pos.author
+  %p
+    %b Цена
+    = @related_pos.price
 = form_for @item do |f|
   - if @item.errors.any?
     #error_explanation
@@ -13,10 +20,10 @@
 
   .field
     = f.label "Название"
-    = f.text_field :title
+    = f.text_field :title, value: (@related_pos.title if @related_pos.present?)
   .field 
     = f.label "price"
-    = f.number_field :price
+    = f.number_field :price, value: (@related_pos.price if @related_pos.present?)
   .field
     = f.label "old_price"
     = f.number_field :old_price
@@ -38,6 +45,7 @@
     = f.text_field :meta_tags
   .field
     = f.label "Автор"
+    =# text_field(:item, :author, :id => "e7")
     = select(:item, :author, @author, {}, {:multiple => true, :class => 'selectpicker', :data => {"live-search" => "true"}})
   .field
     = f.label "Жанр"
@@ -49,4 +57,4 @@
     = f.label "Издатель"
     = select(:item, :publisher, @publisher, {}, { :class => 'selectpicker', :data => {"live-search" => "true"}})
   .actions
-    = f.submit 'Сохранить'
+    = f.submit 'Сохранить', class: "btn btn-success btn-green"

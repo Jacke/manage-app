@@ -14,11 +14,11 @@
         %td
           - if type.item_props.present?
             - type.item_props.each do |prop|
-              = "| #{prop.title} |"
+              = prop.title
         %td= link_to 'Показать', type
         %td= link_to 'Редактировать', edit_item_type_path(type)
         %td= link_to 'Удалить', type, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'Создать тип товара', new_item_type_path, class: "btn btn-success btn-green"
+= link_to 'new item type', new_item_type_path

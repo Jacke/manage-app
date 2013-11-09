@@ -1,0 +1,23 @@
+%h1 Издатели
+
+%table.table
+  %tr
+    %th Название
+    %th Год
+    %th Описание
+    %th
+    %th
+    %th
+
+  - @publishers.each do |publisher|
+    %tr
+      %td= publisher.title
+      %td= publisher.year
+      %td= publisher.description
+      %td= link_to 'Показать', publisher
+      %td= link_to 'Редактировать', edit_publisher_path(publisher)
+      %td= link_to 'Удалить', publisher, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'Новый издатель', new_publisher_path

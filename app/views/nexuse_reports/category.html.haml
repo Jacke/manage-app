@@ -4,37 +4,44 @@
   - @categories.each do |cat|
     %p
       = cat.title
+      = link_to "Редактировать", edit_category_path(cat)
       = link_to "Удалить", cat, :method => :delete, :data => { :confirm => 'Are you sure?' }
     - if cat.children.present?
       - cat.children.each do |ch| 
         %li
           = ch.title
           = link_to "Удалить", ch, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          = link_to "Редактировать", edit_category_path(ch)
 %h1 Жанры
 - if @genres.present?
   - @genres.each do |genre|
     %p
       = genre.title
+      = link_to "Редактировать", edit_category_path(genre)
       = link_to "Удалить", genre, :method => :delete, :data => { :confirm => 'Are you sure?' }
     - if genre.children.present?
       - genre.children.each do |ch| 
         %li
           = ch.title
+          = link_to "Редактировать", edit_category_path(ch)
           = link_to "Удалить", ch, :method => :delete, :data => { :confirm => 'Are you sure?' }
         - if ch.children.present?
           - ch.children.each do |ch1|
             %li
               = ch1.title
+              = link_to "Редактировать", edit_category_path(ch1)
               = link_to "Удалить", ch1, :method => :delete, :data => { :confirm => 'Are you sure?' }
 %h1 Форматы
 - if @formats.present?
   - @formats.each do |format|
     %p
       = format.title
+      = link_to "Редактировать", edit_category_path(format)
       = link_to "Удалить", format, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %h1 Авторы
 - if @authors.present?
   - @authors.each do |author|
-    - author.each do |a| 
-      %p a.title 
+    %p= author.title  
+  //- author.each do |a| 
+  //    %p a.title 

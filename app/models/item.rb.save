@@ -3,9 +3,8 @@ class Item
   include Mongoid::Search
   
   field :title, type: String
-  field :item_type_id, type: BSON::ObjectId
-  has_one :item_type
- #field :pricetax, type: String
+  field :item_type, type: String
+  #field :pricetax, type: String
   #field :pages,   type: Integer
   #field :year, type: Integer
   #field :onpn, type: String 
@@ -33,8 +32,7 @@ class Item
   field :category, type: String 
   #field :presence, type: Boolean
   embeds_many :nexuses
+#  validates_uniqueness_of :article
   has_many :publishers
-  has_many :prop_assigns
-   accepts_nested_attributes_for :prop_assigns
   search_in :title, :author# => :author
 end

@@ -16,6 +16,12 @@
 .filters .btn-group {
 margin-left: -12px;
 }
+.navbar {
+width: 1091px;
+margin: 0 auto;
+margin-left: auto !important;
+padding-top: 5px;
+}
 div.btn-group[data-toggle=buttons-radio] input[type=radio] {
   display:    block;
   position:   absolute;
@@ -30,10 +36,16 @@ div.btn-group[data-toggle=buttons-radio] input[type=radio] {
 margin: 20px 0;
 list-style: none;
 text-align: center;
-display: inline-block;
-margin-top: -47px !important;
+display: block;margin-top: -47px !important;
+position: absolute;
+right: 375px;
+top: 34px;
 }
-
+.row {position: relative;}
+.pagination {display: inline-block;
+padding-bottom: 7px;
+padding: inherit;
+margin-left: 320px; }
 #nexuse_report_moderation {
 display: none;
 }

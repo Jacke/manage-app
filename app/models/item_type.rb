@@ -1,12 +1,10 @@
 class ItemType
   include Mongoid::Document
   field :title, type: String
-  field :size, type: String
-  field :weight,   type: String
-  field :material, type: String
-
-
- # scope :recommend, where(recommend: true)
+  has_many :item_props
+#  embedded_in :items, :inverse_of => :item_type
+  has_many :items 
+# scope :recommend, where(recommend: true)
 
 
 end

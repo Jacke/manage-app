@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  Название
+  =@publisher.title
+%p 
+  Название на английском
+  =@publisher.english_title
+%p
+  year 
+  =@publisher.year
+%p
+  Описание 
+  =@publisher.description
+
+= link_to 'Редактировать', edit_publisher_path(@publisher)
+\|
+= link_to 'Назад', publishers_path

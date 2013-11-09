@@ -1,0 +1,21 @@
+= form_for @publisher do |f|
+  - if @publisher.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@publisher.errors.count, "error")} prohibited this suplier from being saved:"
+      %ul
+        - @publisher.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label "Название"
+    = f.text_field :title
+  .field
+    = f.label "Название на английском"
+    = f.text_field :english_title
+  .field
+    = f.label "Год"
+    = f.number_field :year
+  .field
+    = f.label "Описание"
+    = f.text_field :description
+  .actions
+    = f.submit 'Сохранить', class: "btn btn-success"

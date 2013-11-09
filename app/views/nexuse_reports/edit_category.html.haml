@@ -1,0 +1,26 @@
+%h1 Категоризация
+
+= form_for :category, :url => new_category_path, :method => 'post' do |f|
+  //- if @item.errors.any?
+  //  #error_explanation
+  //    %h2= "#{pluralize(@item.errors.count, "error")} prohibited this item from being saved:"
+  //    %ul
+  //      - @item.errors.full_messages.each do |msg|
+  //        %li= msg
+  .field
+    = f.label "Название"
+    = f.text_field :title
+  .field
+    = f.label "Тип"
+    -# types = [["genre", "genre"], ["author", "author"], ["format", "format"], ["category", "category"]]
+    =# f.select("category", "type", types.collect {|p| [ p[0], p[1] ]})
+    = select_tag :type, options_for_select(["genre", "author", "format", "category"], "format"), { :class => 'selectpicker', :data => {"live-search" => "true"}} 
+  .field
+    = f.label "Родитель"
+    = f.collection_select( :parent_id, @all_categories, :_id, :title, { include_blank: true })
+  .actions
+    = f.submit 'Сохранить', class: 'button'
+/%select.selectpicker{:data => {"live-search" => "true"}}
+/  %option Mustard
+/  %option Ketchup
+/  %option Relish

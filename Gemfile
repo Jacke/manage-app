@@ -7,7 +7,7 @@ gem 'rails', '4.0.0'
 gem 'mongoid', github: 'mongoid/mongoid'
 gem 'mongoid_search'
 gem 'mongoid-tree', :require => 'mongoid/tree'
-
+#gem 'rails4-jquery-autocomplete'
 
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'

@@ -26,7 +26,11 @@ class NexuseReportsController < ApplicationController
     @formats = user_categories("format")
     @authors = user_categories("author")
   end
-  
+  def authors_list
+    @authors = Category.where(type: 'author').full_text_search(params[:q])
+    render :json => @authors.to_json # don't do msg.to_json
+  end
+
   def create_category
     parameters = {type: params[:type]}.merge params[:category]
     logger.info(parameters)
@@ -42,6 +46,11 @@ class NexuseReportsController < ApplicationController
   def new_category
     @all_categories = Category.all
     @category = Category.new
+  end
+
+  def edit_category 
+    @all_categories = Category.all
+    @category = Category.find(params[:id])
   end
   def destroy
     @list = Category.find(params[:id])

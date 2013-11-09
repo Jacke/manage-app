@@ -1,10 +1,14 @@
 %p#notice= notice
 
 %p
-  title 
+  Название типа 
   =@item_type.title
 
-
-= link_to 'Редактировать', edit_item_type_path(@item_type)
+%p 
+  Поля типа:
+  - if @item_type.item_props.present?
+    - @item_type.item_props.each do |prop|
+      %span= "| #{prop.title} |"
+= link_to 'Редактировать тип', edit_item_type_path(@item_type)
 \|
 = link_to 'Назад', item_types_path

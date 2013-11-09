@@ -9,7 +9,7 @@
 <body>
 <header>
 <% if current_user.present? %>
-<div class="navbar">
+<div class="navbar navbar-inverse nav">
   <div class="navbar-inner">
     <div class="container">
       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -26,14 +26,16 @@
           <li><%= link_to 'Прайслисты', lists_path %></li>
           <li><%= link_to 'Загрузить прайс-лист', list_upload_path %></li>
           <li><%= link_to 'Поставщики', supliers_path %></li>
+          <li><%= link_to 'Издатели', publishers_path %></li>
           <li><%= link_to "Очистить базу", flush_db_path %></li>
         </ul>
       </li>
       <li><%= link_to 'Товары', items_path %></li>
-      <li><%= link_to 'item type', item_types_path %></li>
+      <li><%= link_to 'Типы товаров', item_types_path %></li>
       <li><%= link_to 'Товарные позиции', nexuse_reports_path %></li>
       <li><%= link_to 'Категории', nexuse_category_path %></li>
-      
+      <li><%= link_to "Авторы", authors_path %></li>
+      <li><%= link_to 'Произведения', author_creations_path %></li>      
     </ul>
          <ul class="nav pull-right">
           <li class="divider-vertical"></li>

@@ -21,7 +21,7 @@ class Suplier
   field :article, type: Integer
   field :ean, type: Integer
   field :category, type: Integer
-
+  field :formula, type: String
  # scope :recommend, where(recommend: true)
 
 

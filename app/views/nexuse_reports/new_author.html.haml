@@ -1,0 +1,10 @@
+%h1 Автор
+
+= form_for :author, :url => new_author_path, :method => 'post' do |f|
+  .field
+    = f.label "Название"
+    = f.text_field :title
+  .field
+    = f.label "Тип"
+  .actions
+    = f.submit 'Сохранить', class: 'button'
