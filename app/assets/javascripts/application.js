@@ -23,18 +23,20 @@ function split( val ) {
     function extractLast( term ) {
       return split( term ).pop();
     }
-$("#q").autocomplete({
+var   except = {};
+$("#item_author").autocomplete({
   delay: 100,
   minLength: 2,
   source: function(request, response) {
     return $.getJSON("../../category/authors", {
-      q: request.term
+      q: request.term,
     }, function(result) {
       return response(result);
     });
   },
   select: function(event, ui) {
     var terms = split( this.value );
+    console.log(ui.item.value);
     // remove the current input
     terms.pop();
     // add the selected item
@@ -47,7 +49,6 @@ $("#q").autocomplete({
     //  return false;
   }
 }); 
-
 $('.selectpicker').selectpicker();
 $('div.btn-group button').click(function(){
 
