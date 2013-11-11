@@ -48,6 +48,8 @@
     .field
       = f.label "meta_tags"
       = f.text_field :meta_tags
+    .field
+      = f.label "Автор"
       = f.text_field(:author, :placeholder => "Авторы")
 
     - if @genre.present? && @category.present? && @publisher.present?

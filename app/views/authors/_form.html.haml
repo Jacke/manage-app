@@ -1,0 +1,14 @@
+= form_for @author,  html: { class: "form span11 clearfix new_author" } do |f|
+  - if @author.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@author.errors.count, "error")} prohibited this author from being saved:"
+      %ul
+        - @author.errors.full_messages.each do |msg|
+          %li= msg
+  .row.span4
+    .field
+      = f.label "ФИО"
+      = f.text_field :name
+  .actions.item-form
+    = f.submit 'Сохранить', class: "btn btn-success btn-green"
+

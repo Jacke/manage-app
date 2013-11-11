@@ -1,1 +1,26 @@
-Authors
+%section.authors
+  %h1 Товары — Главная база
+  .authors-create
+    = link_to "Новый автор", new_author_path, class: "new_author btn btn-success btn-primary"
+  %div.tabs-content
+    %div.active#db
+      %table.table.table-striped
+        %tr
+          %th Название
+          %th Произведения
+          %th Действия
+        - if @authors.present?
+          - @authors.each do |author|
+            %tr
+              %td= author.name
+              - Creation.where(author_id: author.id).to_a.each do |i|
+                %td= link_to "#{i.title}", creation_path(i)
+              %td
+              %td
+                = link_to "Произведения", author_creations_path(author)
+                = link_to "Редактировать", edit_author_path(author)
+                = link_to "Удалить", author, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        - else
+          %tr
+            %td Авторов не найдено.
+

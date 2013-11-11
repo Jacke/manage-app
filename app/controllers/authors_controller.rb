@@ -46,8 +46,8 @@ class AuthorsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_authors
-      @author = User.find(params[:id])
+    def set_author
+      @author = Author.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white user through.
