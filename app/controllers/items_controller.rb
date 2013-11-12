@@ -28,7 +28,8 @@ class ItemsController < ApplicationController
   end
   def create
     logger.info(item_params)
-    item_params["author"] = item_params["author"].delete("")
+    
+    #item_params["author"] = item_params["author"].delete("")
     logger.info(item_params)
     
     @item = Item.new(item_params)
