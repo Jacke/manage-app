@@ -17,7 +17,7 @@
           %li= msg
   - if params[:position]
     = f.hidden_field :item, value: params[:position]
-  = f.hidden_field :item_type_id, value: params[:item_type]
+  = f.hidden_field :item_type_id, value: params[:item_type] if params[:item_type].present?
   .row.span4
     .field
       = f.label "Название"
@@ -50,7 +50,11 @@
       = f.text_field :meta_tags
     .field
       = f.label "Автор"
-      = f.text_field(:author, :placeholder => "Авторы")
+      - if @item.authors_ids.present?
+        = f.text_field :authors_ids, name: "item[authors_ids][]", value: @item.authors_ids.map {|a| Author.find(a).name }*", "
+      - else
+        = f.text_field :authors_ids, name: "item[authors_ids][]", :placeholder => "Авторы"
+
 
     - if @genre.present? && @category.present? && @publisher.present?
       .field

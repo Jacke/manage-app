@@ -5,11 +5,12 @@ class Item
   field :title, type: String
   field :item_type_id, type: BSON::ObjectId
   belongs_to :item_type
+  belongs_to :creation
  #field :pricetax, type: String
   #field :pages,   type: Integer
   #field :year, type: Integer
   #field :onpn, type: String 
-  field :author, type: Array 
+  field :authors_ids, type: Array 
   #field :header, type: String 
   #field :std, type: String 
   #field :price, type: String
@@ -35,5 +36,5 @@ class Item
   has_many :publishers
   has_many :prop_assigns
   accepts_nested_attributes_for :prop_assigns
-  search_in :title, :author# => :author
+  search_in :title, :authors_ids# => :author
 end

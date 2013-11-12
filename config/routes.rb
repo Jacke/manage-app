@@ -20,10 +20,12 @@ Manage::Application.routes.draw do
   put '/link_position' => 'items#link_position', :as => :link_position
 
   resources :item_types do
+
     resources :type_fields, except: :show
   end
   get '/category/authors' => 'nexuse_reports#authors_list'
-
+  get '/creation/edit/:id' => 'creations#edit', :as => :edit_creat
+  post '/creation/edit/:id' => 'creations#update', :as => :update_creat
   resources :authors do
     resources :creations
   end

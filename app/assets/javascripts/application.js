@@ -24,7 +24,33 @@ function split( val ) {
       return split( term ).pop();
     }
 var   except = {};
-$("#item_author").autocomplete({
+$("#creation_authors_ids").autocomplete({
+  delay: 100,
+  minLength: 2,
+  source: function(request, response) {
+    return $.getJSON("http://knigi.ua:8082/category/authors", {
+      q: request.term,
+    }, function(result) {
+      return response(result);
+    });
+  },
+  select: function(event, ui) {
+    var terms = split( this.value );
+    console.log(ui.item.value);
+    // remove the current input
+    terms.pop();
+    // add the selected item
+    terms.push( ui.item.value );
+    // add placeholder to get the comma-and-space at the end
+    terms.push( "" );
+    this.value = terms.join( ", " );
+    return false;
+    //  window.location = ui.item.name;
+    //  return false;
+  }
+});
+
+$("#item_authors_ids").autocomplete({
   delay: 100,
   minLength: 2,
   source: function(request, response) {

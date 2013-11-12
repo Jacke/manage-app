@@ -5,7 +5,7 @@ class Author
   has_many :creations, validate: false
   include Mongoid::Search
   search_in :name #, :type# => :author
-
+  accepts_nested_attributes_for :creations
  # scope :recommend, where(recommend: true)
 
 

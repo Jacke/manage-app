@@ -11,9 +11,10 @@ class ItemsController < ApplicationController
   end
   def show
     @item = Item.find(params[:id])
+    @authors = Author.find(@item.authors_ids)
     @positions = Nexuse.where(item_id: params[:id]).to_a
     @similar = Nexuse.full_text_search(@item._keywords)
-    @type_fields = @item.item_type.type_fields
+    @type_fields = @item.item_type.type_fields if @item.item_type.present?
   end
   def new
     @item = Item.new
@@ -62,14 +63,19 @@ class ItemsController < ApplicationController
     #find positions
     # position article
     # link_position(params)
-    @item_fields = @item.item_type.type_fields
+    @item_fields = @item.item_type.type_fields if @item.item_type.present?
+    @item_fields = ItemType.first.type_fields unless @item.item_type.present?
   end
 
   def update
+    logger.info("=============>first")
+    a = item_params
+    logger.info("to update \/")
+    logger.info(a)
+    logger.info("to update =================^")
     respond_to do |format|
-      if @item.update(item_params)
+      if @item.update(a)
         @item.update_attribute(:moderation, true)
-        
         if params[:position]
           format.html { redirect_to link_item_path(position: params[:position]), notice: 'item was successfully updated.' }
         else
@@ -121,6 +127,23 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:title, :item_type_id, :publisher, :genre, :moderation, :category, :price, :old_price, :visibility, :item_type, :weight, :description, :meta_tags, :author => [])     
+      params.require(:item).permit!
+       #.permit(
+       #       :title, :item_type_id, 
+       #       :publisher, 
+       #       :genre, :moderation, :category, 
+       #       :price, :old_price, :visibility, 
+       #       :item_type, :weight, :description, 
+       #       :meta_tags, :authors_ids => [], "authors_ids" => [])     
+       if params[:item][:authors_ids].present? && (params[:item][:authors_ids].first.kind_of?(String))
+        authors = []
+        params[:item][:authors_ids].first.split(", ").each do |a|
+          logger.info("loop")
+          authors << Author.where(name: a).first.id if Author.where(name: a).first.present?
+        end
+        logger.info(authors)
+        params[:item][:authors_ids] = authors
+      end
+      params[:item]
     end
 end
