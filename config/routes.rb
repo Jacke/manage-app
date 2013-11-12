@@ -25,7 +25,10 @@ Manage::Application.routes.draw do
   end
   get '/category/authors' => 'nexuse_reports#authors_list'
   get '/creation/edit/:id' => 'creations#edit', :as => :edit_creat
+  post '/creation/new' => 'creations#create', :as => :create_creat
   post '/creation/edit/:id' => 'creations#update', :as => :update_creat
+  delete '/creation/delete/:id' => 'creations#destroy', :as => :destroy_creat
+  get '/creation/new/' => 'creations#new', :as => :new_creat
   resources :authors do
     resources :creations
   end

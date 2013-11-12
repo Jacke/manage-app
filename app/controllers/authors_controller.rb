@@ -16,11 +16,15 @@ class AuthorsController < ApplicationController
   def create 
     @author = Author.new(author_params)
     if @author.save
+      respond_to do |format|
       format.html { redirect_to authors_path, notice: 'author was successfully created.' }
       format.json { head :no_content }
+      end
     else
+      respond_to do |format|
       format.html { render action: 'new' }
       format.json { render json: @author.errors, status: :unprocessable_entity }
+      end
     end
   end
   # DELETE /authors/1
