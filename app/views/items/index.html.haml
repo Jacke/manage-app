@@ -26,7 +26,10 @@
             %tr
               %td= item.title
               %td= item.item_type.title
-              %td= item.authors_ids 
+              %td
+                - if item.authors_ids.present?
+                  - item.authors_ids.each do |author|
+                    = Author.find(author).name 
               %td= item.publisher 
               %td= item.genre
               %td= item.category 
