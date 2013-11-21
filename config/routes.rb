@@ -50,13 +50,16 @@ Manage::Application.routes.draw do
 #####
   devise_for :users, :skip => [:sessions]
   as :user do
+    authenticated :user do
+      root :to => 'nexuse_reports#index', as: :authenticated_root
+    end
+    unauthenticated :user do
+      root :to => "devise/sessions#new", as: :unauthenticated_root
+    end
     get 'login' => 'devise/sessions#new', :as => :new_user_session
     post 'login' => 'devise/sessions#create', :as => :user_session
     delete 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
   end
 
-
   get '/upload' => 'lists#upload', :as => :list_upload
-  
-  root :to => 'nexuse_reports#index'
 end
