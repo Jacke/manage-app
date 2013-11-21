@@ -15,6 +15,9 @@
     = f.label "Админ"
     = f.select :admin, [['Да', true], ['Нет', false]]
   .field
+    = f.label "password"
+    = f.password_field :password
+  .field
     = f.label "Роль"
     = f.select :role, [['Copyrighter', 0], ['Manager', 1]]
   .actions

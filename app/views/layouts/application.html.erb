@@ -21,11 +21,18 @@
       <div class="nav-collapse">
         <ul class="nav navbar-nav">
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Прайсы<b class="caret"></b></a></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+           <% if ApplicationController.helpers.check_parser.present? %>
+           <i class="icon-ok-circle"></i>
+           <% else %>
+           <i class="icon-exclamation-sign"></i>
+           <% end %>
+             Прайсы<b class="caret"></b></a></a>
         <ul class="dropdown-menu">
           <li><%= link_to 'Прайслисты', lists_path %></li>
           <li><%= link_to 'Загрузить прайс-лист', list_upload_path %></li>
-          <li><%= link_to 'Поставщики', supliers_path %></li>
+          <li>
+              <%= link_to 'Поставщики', supliers_path %></li>
           <li><%= link_to 'Издатели', publishers_path %></li>
           <li><%= link_to "Очистить базу", flush_db_path %></li>
         </ul>
