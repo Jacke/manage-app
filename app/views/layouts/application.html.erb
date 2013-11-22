@@ -20,6 +20,7 @@
       <a class="brand" href="/">Manage</a>
       <div class="nav-collapse">
         <ul class="nav navbar-nav">
+      <% if current_user.admin? %>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
            <% if ApplicationController.helpers.check_parser.present? %>
@@ -30,13 +31,16 @@
              Прайсы<b class="caret"></b></a></a>
         <ul class="dropdown-menu">
           <li><%= link_to 'Прайслисты', lists_path %></li>
+          <% if ApplicationController.helpers.check_parser.present? %>
           <li><%= link_to 'Загрузить прайс-лист', list_upload_path %></li>
+          <% end %>
           <li>
               <%= link_to 'Поставщики', supliers_path %></li>
           <li><%= link_to 'Издатели', publishers_path %></li>
           <li><%= link_to "Очистить базу", flush_db_path %></li>
         </ul>
       </li>
+      <% end %>
       <li><%= link_to 'Товары', items_path %></li>
       <li><%= link_to 'Типы товаров', item_types_path %></li>
       <li><%= link_to 'Товарные позиции', nexuse_reports_path %></li>
