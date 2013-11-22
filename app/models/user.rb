@@ -25,5 +25,7 @@ class User
   validates_presence_of :name
   validates_uniqueness_of :name, :email, :case_sensitive => false
   field :admin, :type => Boolean, :default => false
-  
+  def admin?
+    admin=="true"
+  end
 end
