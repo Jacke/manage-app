@@ -28,4 +28,7 @@ class User
   def admin?
     admin=="true"
   end
+  def copywriter?
+    role==0
+  end
 end
