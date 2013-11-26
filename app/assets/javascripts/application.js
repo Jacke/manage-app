@@ -24,6 +24,19 @@ function split( val ) {
       return split( term ).pop();
     }
 var   except = {};
+var tagApi = jQuery("#creation_authors_ids").tagsManager({
+      prefilled: ["Angola", "Laos", "Nepal"]
+    });
+ 
+    jQuery("#creation_authors_ids").typeahead({
+      name: 'countries',
+      limit: 15,
+      prefetch: '../../category/authors'
+    }).on('typeahead:selected', function (e, d) {
+ 
+      tagApi.tagsManager("pushTag", d.value);
+ 
+    });
 $("#creation_authors_ids").autocomplete({
   delay: 100,
   minLength: 2,
@@ -49,7 +62,18 @@ $("#creation_authors_ids").autocomplete({
     //  return false;
   }
 });
-
+var tagApi = jQuery("#item_authors_ids").tagsManager({
+    });
+ 
+    jQuery("#item_authors_ids").typeahead({
+      name: 'countries',
+      limit: 15,
+      prefetch: '../../category/authors'
+    }).on('typeahead:selected', function (e, d) {
+ 
+      tagApi.tagsManager("pushTag", d.value);
+ 
+    });
 $("#item_authors_ids").autocomplete({
   delay: 100,
   minLength: 2,

@@ -56,7 +56,7 @@
           <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.admin? ? "Админ | " : "Менеджер | " %><%= current_user.email %><b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <% if current_user.admin?
+              <% if current_user.admin? %>
               <li><%= link_to 'Пользователи', users_path %></li>
               <% end %>
               <li><%= link_to 'Выход', destroy_user_session_path, :method=>'delete' %></li>

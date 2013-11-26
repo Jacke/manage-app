@@ -26,7 +26,7 @@ class User
   validates_uniqueness_of :name, :email, :case_sensitive => false
   field :admin, :type => Boolean, :default => false
   def admin?
-    admin=="true"
+    admin=="true" || admin == true
   end
   def copywriter?
     role==0
