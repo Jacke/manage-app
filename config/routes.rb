@@ -24,6 +24,11 @@ Manage::Application.routes.draw do
     resources :type_fields, except: :show
   end
   get '/api_docs/' => 'api_docs#index', :as => :api_docs
+  get '/api/items' => 'api_docs#items', :as => :api_items
+  get '/api/positions' => 'api_docs#positions', :as => :api_positions
+  get '/api/categories' => 'api_docs#category', :as => :api_category
+
+
   get '/category/authors' => 'nexuse_reports#authors_list'
   get '/creation/edit/:id' => 'creations#edit', :as => :edit_creat
   post '/creation/new' => 'creations#create', :as => :create_creat
