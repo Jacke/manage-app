@@ -23,7 +23,12 @@ class ItemsController < ApplicationController
     @genre = Category.where(type: "genre").distinct(:title)
     @category = Category.where(type: "category").distinct(:title)
     @related_pos = Nexuse.find(params[:position]) if params[:position]
-    @item_type = ItemType.find(params[:item_type])
+    # Book type is default
+    if params[:item_type]
+      @item_type = ItemType.find(params[:item_type]) if params[:item_type]
+    else
+      @item_type = ItemType.first
+    end
     @item_fields = @item_type.type_fields
   end
   def create
