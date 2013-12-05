@@ -24,8 +24,10 @@ function split( val ) {
       return split( term ).pop();
     }
 var   except = {};
+
+var signed_creation = $("#creation_authors_ids").val();
 var tagApi = jQuery("#creation_authors_ids").tagsManager({
-      prefilled: ["Angola", "Laos", "Nepal"]
+      prefilled: [signed_creation]
     });
  
     jQuery("#creation_authors_ids").typeahead({
@@ -62,7 +64,9 @@ $("#creation_authors_ids").autocomplete({
     //  return false;
   }
 });
+var signed = $("#item_authors_ids").val();
 var tagApi = jQuery("#item_authors_ids").tagsManager({
+    prefilled: [signed]
     });
  
     jQuery("#item_authors_ids").typeahead({

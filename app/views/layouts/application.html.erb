@@ -43,6 +43,7 @@
       <% end %>
       <li><%= link_to 'Товары', items_path %></li>
       <% if current_user.admin? %>
+      <li><%= link_to 'API', api_docs_path %></li>
       <li><%= link_to 'Типы товаров', item_types_path %></li>
       <% end %>
       <li><%= link_to 'Товарные позиции', nexuse_reports_path %></li>
