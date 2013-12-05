@@ -1,0 +1,11 @@
+= "Произведения #{@author.name}"
+- if @creations.present?
+  - @creations.each do |c|
+    %p
+      = c.name
+      = link_to "Редактировать", edit_creat_path(@author.id, id: c.id)
+      = link_to "Удалить", destroy_creat_path(c), :method => :delete, :data => { :confirm => 'Are you sure?' }
+      =# link_to "Удалить", author_creations(c), :method => :delete, :data => { :confirm => 'Are you sure?' }    
+- else
+  %p Произведения отсутствюут
+= link_to "Создать произведение", new_creat_path(author_id: @author)

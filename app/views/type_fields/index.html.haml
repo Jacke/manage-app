@@ -1,0 +1,12 @@
+%h2= @item_type.title
+- if @fields.present?
+  - @fields.each do |field|
+    %p
+      = field.title
+      - if field.datatype.present?
+        |
+        = field.datatype
+      = link_to "Редактировать поле", edit_item_type_type_field_path(item_type_id: @fields.first.item_type.id, id: field.id)
+      = link_to "Удалить поле", item_type_type_field_path(@fields.first.item_type, field), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+= link_to "Новое поле", new_item_type_type_field_path(item_type_id: @item_type.id)

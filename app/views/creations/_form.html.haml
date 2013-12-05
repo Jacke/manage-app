@@ -1,0 +1,16 @@
+= form_for :creation, html: { class: "form span11 clearfix new_author" } do |cr|
+  .row.span4
+    .field
+      = cr.label "Название"
+      = cr.text_field :name
+      =# cr.hidden_field :author_id, value: params[:author_id]
+    .field
+      = cr.label "Авторы"
+      - if @creation.authors_ids.present?
+        = cr.text_field :authors_ids, name: "creation[authors_ids][]", value: @creation.authors_ids.map {|a| Author.find(a).name }*", "
+      - else
+        = cr.text_field :authors_ids, name: "creation[authors_ids][]"
+  .actions.item-form
+    = cr.submit 'Сохранить', class: "btn btn-success btn-green"
+
+

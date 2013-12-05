@@ -1,0 +1,14 @@
+%h1 Редактировать автора
+
+= render 'form'
+%div.later
+  - if @author_creation.present?
+    - @author_creation.each do |creation|
+      %p
+        %b= creation.title
+.controls.clearthis
+  = link_to 'Показать', @author, class: "btn btn-primary btn-sm"
+  \|
+  = link_to 'Назад', authors_path, class: "btn btn-danger btn-sm"
+
+

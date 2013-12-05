@@ -1,0 +1,10 @@
+= form_for [@item_type, @field] do |f|
+
+  .field
+    = f.label "Название"
+    = f.text_field :title
+  .field
+    = f.label "Тип поля"
+    = f.select :datatype, [["Строка", "String"], ["Число", "Integer"]]
+  .actions
+    = f.submit 'Сохранить', class: "btn btn-success btn-green"
